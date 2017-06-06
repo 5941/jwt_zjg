@@ -1,0 +1,79 @@
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title" style="border-left:3px solid #2983e8; padding-left: 5px;">{{action}}用户</span>
+        <span class="return_btn" ui-sref="main.account">返回</span>
+    </div>
+    <div class="wrapper-content">
+        <div class="w100 white-bg">
+            <div class="update_content">
+            <form role="form" id="data-form" novalidate>
+                <ul class="w100" style="overflow: visible;">
+                    <li class="update_header">基本信息</li>
+                    <li class="w100 fl" style="margin:20px 0 5px 0"><span>用户头像</span>
+                    <img src="{{detail.photoThumb == null?'img/management/icon_Head.png':detail.photoThumb}}" class="avatar-middle"> </li>
+                    <div style="clear: both;"></div>
+                    <li class="w30 input_group fl" style="overflow: visible;">
+                        <label for="" class="fl"><span>*</span>用户代码</label>
+                        <input type="text" ng-disabled="disabled" placeholder="请输入用户代码" ng-model="personCode" required maxlength="30" 
+                        typeahead-on-select="selectPerson($item, $model, $label, $event)"
+                        uib-typeahead="person.personCode as (person.personCode+'-'+person.personName) for person in persons | filter:$viewValue | limitTo:8" class="fl">
+                    </li>
+                    <li class="w30 input_group fl">
+                        <label for="" class="fl"><span>*</span>用户姓名</label>
+                        <input type="text" class="fl"  required disabled ng-model="detail.accountName">
+                    </li>
+                    <li class="w30 input_group fl" style="overflow: visible;">
+                        <label for="" class="fl">管理部门</label>
+                        <input type="text" class="fl"  ng-show="true" disabled ng-model="detail.deptName">
+                        <combotree data="dept" type="dept" ng-show="false" on-select="selectDept()"></combotree>
+                    </li>
+                    <div style="clear: both;"></div>
+                    <li class="w30 input_group fl" style="overflow: visible;">
+                        <label for="" class="fl">管理员</label>
+                        <div class="dropBar dropdown fl">
+                            <div type="button"
+                                 data-toggle="dropdown">
+                                {{yesNoMap[detail.isAdmin]}}<span class="caret"></span>
+                            </div>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="(key,value) in yesNoMap" ng-click="detail.isAdmin = key;"><a ng-bind="value"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- <input type="text" class="fl" placeholder="请输入管理员" disabled ng-model="yesNoMap[detail.isAdmin]"> -->
+                    </li>
+                    <li class="w30 input_group fl" style="overflow: visible;">
+                        <label for="" class="fl"><span>*</span>状态</label>
+                        <div class="dropBar dropdown fl">
+                            <div type="button"
+                                 data-toggle="dropdown">
+                                {{statusMap[detail.enable]}}<span class="caret"></span>
+                            </div>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="(key,value) in statusMap" ng-click="detail.enable = key;"><a ng-bind="value"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="w30 input_group fl">
+                        <label for="" class="fl">备注</label>
+                        <input type="text" class="fl" maxlength="500" placeholder="请输入..." ng-model="detail.remark">
+                    </li>
+                    <div style="clear: both;"></div>
+                </ul>
+                
+                <ul class="w100" style="overflow: visible; margin-bottom: 20px;">
+                    <li class="update_header">用户角色</li>
+                    <div js-tree="treeConfig" tree="treeInstance" ng-model="treeData" style="margin-top:10px"></div>
+                </ul>
+            </form>
+            </div>
+           
+        </div>
+        <div class="w100 btnbar">
+            <button ui-sref="main.account">取消</button>
+            <button id="edit" ng-click="doSave()">保存</button>
+            <button  ng-show="action=='编辑'" id="reset" ng-click="doReset()">重置密码</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="dialog w100">
+    <div class="dialog_head">
+        {{title}}<span class="fr" ng-click="cancel();">X</span>
+    </div>
+
+    <div>
+        <label for="">字段名称</label>
+        <input type="text" ng-model="name">
+    </div>
+
+    <time-range-slider style="display:inline-block;width:500px;height:60px;" t-instance="tInstance" range-list="rangeList" loaded="loaded"></time-range-slider>
+
+    <ul>
+        <li ng-repeat="item in rangeList" ng-click="removeRange(item)">
+            {{item.startTime}}-{{item.endTime}}
+        </li>
+    </ul>
+
+    <div class="w100">
+        <a ng-click="ok();" class="active fr">确认</a>
+        <a ng-click="cancel();" class="fr">取消</a>
+    </div>
+
+</div>

@@ -1,0 +1,410 @@
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">通行证查询</span>
+        <i class="icon-ask"></i>
+    </div>
+
+    <form role="form" class="form-inline" ng-submit="singleSearch()">
+        <div class="advSearch singleSearch">
+            <div class="dropBar dropdown fl" style="width: 120px;">
+                <div type="button" data-toggle="dropdown">
+                    {{pass_search_type}}<span class="caret"></span>
+                </div>
+                <ul class="dropdown-menu" role="menu">
+                    <li ng-repeat="item in pass_search_types" ng-click="selectPassSearchType(item);">
+                        <a ng-bind="item"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="fl" ng-show="pass_search_type=='号牌号码'">
+            	<div class="dropBar dropdown fl" style="width: 120px;">
+	                <div type="button" data-toggle="dropdown" style="text-align:center" >
+	                    {{enums["plateTypeId"]._info.hash[passSingleParams.plateTypeId]}}<span class="caret"></span>
+	                </div>
+	                <ul class="dropdown-menu" role="menu">
+	                    <li ng-repeat="item in enums['plateTypeId']._info.arr" ng-click="passSingleParams.plateTypeId=item.dataKey">
+	                        <a ng-bind="item.dataValue"></a>
+	                    </li>
+	                </ul>
+	            </div>
+	            <div class="fl inputbar" >
+	                <plateinput class="fl " style="width:100%;" name="plate" options="{placeholder:'请输入号牌号码'}" ng-model="passSingleParams.plate"
+	                />
+	                <img src="./img/management/search.png" style="cursor: pointer;" ng-click="singleSearch();">
+	            </div>
+            </div>
+            
+            
+            <div class="input-group date fl" ng-show="pass_search_type=='申请时间'">
+                <input date-range-picker class="date-select date-picker" type="text" readonly ng-model="datePickerSingle.date" options="{eventHandlers: {'apply.daterangepicker': selectDateSingle},timePicker:true,locale:locale}"/>
+            </div>
+            
+            <div class="input-group date fl" ng-show="pass_search_type=='重点车辆类型'">
+            	<div class="dropBar dropdown fl" style="width: 200px;">
+                    <div type="button" data-toggle="dropdown" style="text-align:center">
+                        {{enums["forbidTypeId"]._info.hash[passSingleParams.forbidTypeId]}}<span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="item in enums['forbidTypeId']._info.arr" ng-click="passSingleParams.forbidTypeId=item.forbidTypeId;singleSearch();">
+                            <a ng-bind="item.forbidTypeName"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div toggle-addon class="fl toggle_btn">
+                <label class="small text-primary" style="margin-left: 15px;">高级筛选</label>
+                <img src="img/management/screen.png" style="cursor:pointer;">
+            </div>
+
+            <button type="button" class="btn btn-default fr" ng-click="openColumnDef();" tooltip-placement="left" uib-tooltip="自定义列表项" style="margin-left: 10px;color:#747F8C">
+                <i class="glyphicon glyphicon-cog"></i>
+            </button>
+            <div style="clear: both;"></div>
+        </div>
+
+    </form>
+    <form role="form">
+        <div id="addon" class="advSearch_bar">
+            <div class="inputbar lg fl">
+                <label class="fl">申请时间</label>
+                <input date-range-picker class="date-picker time_select_bg fl" type="text" readonly ng-model="datePicker.date" options="{eventHandlers: {'apply.daterangepicker': selectDate},timePicker:true,locale:locale}"
+                />
+            </div>
+            <div class="inputbar sm fl">
+                <label class="fl">号牌种类</label>
+                <div class="dropBar dropdown fl">
+                    <div type="button" data-toggle="dropdown" style="text-align:center">
+                        {{enums["plateTypeId"]._info.hash[passParams.plateTypeId]}}<span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="item in enums['plateTypeId']._info.arr" ng-click="passParams.plateTypeId=item.dataKey">
+                            <a ng-bind="item.dataValue"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="inputbar sm fl">
+                <label class="fl">号牌号码</label>
+                <plateinput class="fl" options="{placeholder:'请输入号牌号码'}" ng-model="passParams.plate" />
+            </div>
+            <div class="inputbar sm fl">
+                <label class="fl">联系人</label>
+                <input type="text" placeholder="请输入联系人" ng-model="passParams.contact" />
+            </div>
+            <div style="clear: both;"></div>
+            <div class="inputbar lg fl">
+                <label class="fl">联系电话</label>
+                <input type="text" placeholder="请输入联系电话" ng-model="passParams.phoneNumber">
+            </div>
+            <div class="inputbar sm fl">
+                <label class="fl">重点车辆类型</label>
+                <div class="dropBar dropdown fl">
+                    <div type="button" data-toggle="dropdown" style="text-align:center">
+                        {{enums["forbidTypeId"]._info.hash[passParams.forbidTypeId]}}<span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="item in enums['forbidTypeId']._info.arr" ng-click="passParams.forbidTypeId=item.forbidTypeId">
+                            <a ng-bind="item.forbidTypeName"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="inputbar sm fl">
+                <label class="fl">数据来源</label>
+                <div class="dropBar dropdown fl">
+                    <div type="button" data-toggle="dropdown" style="text-align:center">
+                        {{enums['accessType']._info.hash[passParams.accessType] }}<span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="item in enums['accessType']._info.arr" ng-click="passParams.accessType=item.key">
+                            <a ng-bind="item.value"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="inputbar sm fl" ng-show="currentTab=='临时通行证'">
+                <label class="fl">处理状态</label>
+                <div class="dropBar dropdown fl">
+                    <div type="button" data-toggle="dropdown" style="text-align:center">
+                        {{enums['tempCardStatus']._info.hash[passParams.status] }}<span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="item in enums['tempCardStatus']._info.arr" ng-click="passParams.status=item.name">
+                            <a ng-bind="item.desc"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="inputbar sm fl" ng-show="currentTab=='长期通行证'">
+                <label class="fl">处理状态</label>
+                <div class="dropBar dropdown fl">
+                    <div type="button" data-toggle="dropdown" style="text-align:center">
+                        {{enums['cardStatus']._info.hash[passParams.status] }}<span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="item in enums['cardStatus']._info.arr" ng-click="passParams.status=item.name">
+                            <a ng-bind="item.desc"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="w100 text-right">
+                <div class="col-lg-4 col-lg-offset-8">
+                    <!--<label class="checkbox-inline">
+                        <input type="checkbox" ng-model="params.subDept">搜索包括下级部门
+                    </label>-->
+                    <div class="btn btn-primary" ng-click="advSearch()">搜索</div>
+                    <div class="btn btn-default" ng-click="clearCarParams()">清除</div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="content_bar content_pd">
+        <div class="w100 content animated fadeInRight">  
+            <div class="row">
+                <div class="w100">
+                    <a ng-click="setTab(item);" class="tabA" ng-class="{actived:currentTab==item}" ng-repeat="item in passTabs">{{item}}</a>
+                </div>
+                <!-- data table -->
+                <table ng-show="currentTab=='临时通行证'" datatable="" dt-instance="dtInstance1" dt-options="dtOptions1" dt-columns="dtColumns1" class="table table-hover">
+                </table>
+                <table ng-show="currentTab=='长期通行证'" datatable="" dt-instance="dtInstance2" dt-options="dtOptions2" dt-columns="dtColumns2" class="table table-hover">
+                </table>
+            </div>
+        </div>    
+    </div>
+</div>
+
+<div class="btnbar big_nav_width">
+    <div ng-show="currentTab=='临时通行证'" pager dt-instance="dtInstance1" />
+    <div ng-show="currentTab=='长期通行证'" pager dt-instance="dtInstance2" />
+</div>
+
+
+<!--详情-->
+<div class="row detailPop full-height" ng-class="{aniIn:popShow}" ng-show="popShow" >
+    <div class="detail_content">
+        <div class="detail_head_action">
+        	<div class="fr optionsBtns">
+        		<a class="text-primary" ng-show="currentTab == '长期通行证' && detail.status=='已打印'">补打</a>
+        		<a class="text-primary" ng-show="currentTab == '长期通行证' && detail.status=='已打印'" ng-click="goCardHistory(detail)">换发</a>
+        		<a class="text-primary" ng-show="currentTab == '长期通行证' && detail.status=='已退回'" ng-click="reApply(detail)">重新申请</a>
+        	</div>
+        	<img src="./img/management/icon_close.png" alt="关闭" ng-click="closePop();" class="btn">
+        </div>
+        <div style="height: calc(100% - 98px);overflow-y: auto;">
+	        <div class="w100 container">
+	        	<div class="row">
+	        		<p class="d-header">
+	        			<span class="fr">
+	        				已停留 1天20小时
+	        			</span>
+	        			<span>{{detail.applyTime}}</span>
+	        			<strong>【{{detail.status}}】</strong>
+	        		</p>
+	        	</div>
+	        	<div class="row">
+        			<div class="col-md-6">
+		        		<div class="form-group">
+							<label>通行证类型</label>
+							<span>{{detail.passType}}</span>
+						</div>
+					</div>
+					<div class="col-md-6">
+		        		<div class="form-group">
+							<label>号牌号码</label>
+							<span>{{detail.plate}}</span>
+						</div>
+					</div>
+					<div class="col-md-6">
+		        		<div class="form-group">
+							<label>重点车辆类型</label>
+							<span>{{detail.forbidTypeId }}</span>
+						</div>
+					</div>
+					<div class="col-md-6">
+		        		<div class="form-group">
+							<label>号牌颜色</label>
+							<span>{{detail.plateColorId }}</span>
+						</div>
+					</div>
+					<div class="col-md-6">
+		        		<div class="form-group">
+							<label>挂车号牌</label>
+							<span>{{detail.backPlate }}</span>
+						</div>
+					</div>
+					<div class="col-md-6">
+		        		<div class="form-group">
+							<label>号牌种类</label>
+							<span>{{detail.plateType }}</span>
+						</div>
+					</div>
+					<div class="col-md-6">
+		        		<div class="form-group">
+							<label>联系人</label>
+							<span>{{detail.contact}}</span>
+						</div>
+					</div>
+					<div class="col-md-6">
+		        		<div class="form-group">
+							<label>所有人</label>
+							<span>{{detail.owner }}</span>
+						</div>
+					</div>
+					<div class="col-md-12">
+		        		<div class="form-group">
+							<label>联系电话</label>
+							<span>{{detail.phoneNumber }}</span>
+						</div>
+					</div>
+					<div class="col-md-12">
+		        		<div class="form-group">
+							<label>行驶证住址</label>
+							<span>{{detail.address }}</span>
+						</div>
+					</div>
+					<div class="col-md-12" ng-show="currentTab == '临时通行证'">
+		        		<div class="form-group">
+							<label>生效日期</label>
+							<span>{{detail.beginDate }}</span>
+						</div>
+					</div>
+					<div class="col-md-6" ng-show="currentTab == '长期通行证'">
+		        		<div class="form-group">
+							<label>开始日期</label>
+							<span>{{detail.beginDate }}</span>
+						</div>
+					</div>
+					<div class="col-md-6" ng-show="currentTab == '长期通行证'">
+		        		<div class="form-group">
+							<label>结束日期</label>
+							<span>{{detail.endDate }}</span>
+						</div>
+					</div>
+	        		<div class="col-md-12">
+		        		<div class="form-group">
+							<label>通行时段</label>
+							<span>{{detail.passTimeRangeValue | passTimeRange }}</span>
+						</div>
+					</div>
+					<div class="col-md-12">
+		        		<div class="form-group">
+							<label>附件</label>
+							<div class="attach">
+								<div ng-repeat="item in detail.cardPicRelationList">
+									<img ng-src="{{item.picUrl}}"/>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+		        		<div class="form-group">
+							<label>出发地</label>
+							<span>{{detail.passAreaList[0].srcName}}</span>
+						</div>
+					</div>
+					<div class="col-md-12">
+		        		<div class="form-group">
+							<label>目的地</label>
+							<span>{{detail.passAreaList[0].destName}}</span>
+						</div>
+					</div>
+					<div class="col-md-12" ng-repeat="item in detail.passAreaList">
+		        		<div class="form-group">
+							<label>通行范围</label>
+							<span>{{item.areaRange}}</span>
+						</div>
+					</div>
+				</div>
+	        </div>
+	        <div id="map" style="width: 100%;height: 300px;border: 1px solid #eee;">
+	        	<view-forbid-range instance="instance" pass-areas="detailPassAreaList"></view-forbid-range>
+	        </div>
+        </div>
+        <div class="detail_bottom w100 content_pd">
+        	<div class="row">
+        		<div class="col-md-8">
+	        		<div class="form-group">
+						<label>申请日期</label>
+						<span>{{detail.applyTime}}</span>
+					</div>
+				</div>
+				<div class="col-md-4">
+	        		<div class="form-group">
+						<label>数据来源</label>
+						<span>{{detail.accessType}}</span>
+					</div>
+				</div>
+        	</div>
+        </div>
+    </div>
+</div>
+
+<!--换发-->
+<div class="row detailPop full-height" ng-class="{aniIn:popHistoryShow}" ng-show="popHistoryShow">
+    <div class="detail_content">
+        <div class="detail_head_action">
+        	<div class="fr optionsBtns">
+        		<a class="text-primary" ng-click="returnBack()">取消</a>
+        		<a class="text-primary" ng-click="addCarHistroy()">确定</a>
+        	</div>
+        	<img src="./img/management/icon_back2.png" alt="关闭" ng-click="returnBack();" class="btn">
+            <img src="./img/management/icon_close.png" alt="关闭" ng-click="closeHistoryPop();" class="btn">
+        </div>
+        <div style="height: calc(100% - 40px);overflow-y: auto;">
+	        <div class="w100 container" style="padding-top: 20px;">
+				<div class="row">
+					<div class="col-md-6">
+		        		<div class="form-group">
+							<label>开始日期</label>
+							<input type="date" ng-model="hfstartDate" />
+						</div>
+					</div>
+					<div class="col-md-6">
+		        		<div class="form-group">
+							<label>结束日期</label>
+							<input type="date" ng-model="hfendDate" />
+						</div>
+					</div>
+					<div class="col-md-12">
+		        		<div class="form-group">
+							<label>有效期</label>
+							<span>{{hfvalidDates}}</span>
+						</div>
+					</div>
+				</div>
+	        </div>
+	        <div class="panel-header">
+				通行时段
+			</div>
+			
+			<pass-time-range type="longPass" pass-period-data="passPeriodData"></pass-time-range>
+			
+			<div class="panel-header">
+				换发记录
+			</div>
+			<table class="table pass_history_table">
+				<thead>
+					<tr>
+					  <th>操作人</th>
+					  <th>有效期</th>
+					  <th>通行时段</th>
+					  <th>操作时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in carHistroyRecords">
+						<td>{{item.updateAccount }}</td>
+						<td>{{item.beginDate }}</td>
+						<td>{{item.passTimeRange}}</td>
+						<td>{{item.updateTime}}</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</div>

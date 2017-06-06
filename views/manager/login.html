@@ -1,0 +1,21 @@
+<div class="login-bg" full-height>
+    <div class="animated fadeInDown login-div">
+        <img src="img/framework/pic_login_logo.png" class="login-title"/>
+        <!-- <img src="img/framework/pic_logo_pingxiang.png" class="login-title"/> -->
+        <form class="login-form">
+            <div class="username">
+                <input type="text" ng-model="user.username" ng-keydown="myKeydown($event)" class="form-control" autocomplete="new-password" placeholder="请输入用户名" required="">
+            </div>
+            <div class="password">
+                <input type="password" ng-model="user.password" ng-keydown="myKeydown2($event);" class="form-control" autocomplete="new-password" placeholder="请输入登录密码" required="">
+            </div>
+
+            <a type="button" href="javascript:void(0);"  ng-click="login();" class="btn btn-primary block m-b">登录</a>
+            
+        </form>
+        
+    </div>
+
+    <div class="copyright">Copyright © 2011-2017 智通科技 . All Rights Reserved</div>
+</div>
+ 

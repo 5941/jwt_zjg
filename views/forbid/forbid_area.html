@@ -1,0 +1,39 @@
+<div style="height:100%;">
+    <div class="w100 header">
+        <div class="fr right-Btns">
+            <button class="btn btn-default" ng-repeat="item in linkBtns">{{item}}</button>
+            <a class="text-primary" ng-click="addArea()"><img style="width:12px;height:12px;position:relative;top:-1px;left:-3px;" src="views/forbid/img/add.png"> 新增禁行范围</a>
+        </div>
+        <span class="in-title">禁行范围</span>
+        <i class="icon-ask"></i>
+    </div>
+    <form role="form" class="form-inline" ng-submit="singleSearch()">
+        <div class="advSearch singleSearch">
+            <div class="inputbar fl">
+                <input style="width:100%;" class="fl" type="text" ng-model="params.areaName" placeholder="请输入关键字" />
+                <img src="./img/management/search.png" style="cursor: pointer;" ng-click="search();">
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+
+    </form>
+    <div class="main-content has-page no-pdr">
+        <ul class="flex-box">
+            <li class="flex-item" ng-repeat="item in areaList">
+                <div class="map-thumbnail-wrap">
+                    <map-thumbnail edit-area="editArea" delete-area="deleteArea" area-data="item"></map-thumbnail>
+                </div>
+                <div class="map-thumbnail-areaRange" tooltip-placement="top-left" uib-tooltip="{{item.areaRange}}">
+                    {{item.areaRange}}
+                </div>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<table datatable="" style="display:none;" dt-instance="dtInstance1" dt-options="dtOptions1" dt-columns="dtColumns1" class="table table-hover">
+</table>
+<div class="btnbar big_nav_width" style="width: calc(100% - 160px);right:0px;">
+    <div pager dt-instance="dtInstance1" />
+</div>

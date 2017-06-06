@@ -1,0 +1,22 @@
+
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">模块管理</span>
+        <i class="icon-ask"></i>
+
+        <a class="addBtn fr" ng-click="openNew()" actionbtn action='manager.module.create'>
+            <i class="glyphicon glyphicon-plus"></i> 新增模块
+        </a>   
+    </div>
+    
+    <div class="content_bar">
+        <div class="content noPadding">
+            <!-- data table -->
+             <table datatable="" dt-instance="dtInstance" dt-options="dtOptions" dt-columns="dtColumns" class="table table-hover">
+            </table>
+        </div>
+    </div>
+    
+    <div ng-include="'views/framework/module_detail.html'"></div>
+
+</div>

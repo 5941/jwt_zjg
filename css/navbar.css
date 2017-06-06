@@ -1,0 +1,15 @@
+.nav > li > a{
+    overflow: hidden;
+}
+body.mini-navbar .navbar-static-side{
+    width: 50px;
+}
+.metismenu li a i.icon{
+    width: 13px;
+    height: 15px;
+    margin-top: 3px;
+    float: left;
+    display: inline-block;
+    margin-right: 8px
+}
+

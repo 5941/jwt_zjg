@@ -1,0 +1,22 @@
+<div class="row detailPop full-height" ng-class="{aniIn:popShow}">
+    <div class="detail_content">
+        <div class="detail_head_action">
+            <img src="/img/management/icon_close.png" alt="关闭" ng-click="closePop();" class="btn"> 
+            <span class="fr btn-link" ng-click="openEdit(detail.accountId)" actionbtn action='test_alcohol.account.edit'>编辑</span>  
+        </div>
+        <ul class="w100">
+            <li class="detail_header">基本信息</li>
+            <li class="w100 fl" style="margin:20px 0 5px 0"><span>用户头像</span>
+            <img src="{{detail.photoThumb == null?'img/management/icon_Head.png':detail.photoThumb}}" class="avatar-middle"> </li>
+            <li class="w50 fl"><span>用户代码</span>{{detail.accountCode}}</li>
+            <li class="w50 fl"><span>用户姓名</span>{{detail.accountName}}</li>
+            <li class="w50 fl"><span>管理部门</span>{{detail.deptName}}</li>
+            <li class="w50 fl"><span>管理员</span>{{{'TRUE':'是','FALSE':'否'}[detail.isAdmin]}}</li>
+            <li class="w50 fl"><span>状态</span>{{{'TRUE':'启用','FALSE':'禁用'}[detail.enable]}}</li>
+            <li class="w50 fl"><span>备注</span>{{detail.remark}}</li>
+            <div style="clear: both;"></div>
+            <li class="detail_header">用户角色</li>
+            <div js-tree="treeConfig" tree="treeInstance" ng-model="treeData" style="margin-top:10px"></div>
+        </ul>
+    </div>
+</div>

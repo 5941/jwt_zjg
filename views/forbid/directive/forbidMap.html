@@ -1,0 +1,206 @@
+<style type="text/css">
+    forbid-map .tools{
+        position: absolute;
+        top:7px;
+        right:13px;
+    }
+
+    forbid-map .tools .search{
+        position: relative;
+        width:223px;
+        float:left;
+    }
+
+    forbid-map .tools .drawtype{
+        margin-left:10px;
+        width:140px;
+        height:27px;
+        border-radius:4px;
+        background: #fff;
+        float:left;
+        padding:7px 16px 7px 11px;
+        font-size:12px;
+    }
+
+    forbid-map .tools .btn-buildLine{
+        width:289px;
+        height:28px;
+        background: #408ee6;
+        color:#fff;
+        text-align: center;
+        border:none;
+        border-radius: 4px;
+        margin-left:16px;
+        margin-top:26px;
+    }
+
+    forbid-map .tools .drawtype .line{
+        padding-left:22px;
+        background: url(views/forbid/img/icon_road.png) no-repeat;
+        background-size: 13px 13px;
+        cursor: pointer;
+    }
+
+    forbid-map .tools .drawtype .line.active{
+        background: url(views/forbid/img/icon_road_blue.png) no-repeat;
+        color:#408ee6;
+    }
+
+    forbid-map .tools .drawtype .area{
+        padding-left:20px;
+        background: url(views/forbid/img/icon_quyu.png) no-repeat;
+        background-size: 13px 13px;
+        cursor: pointer;
+    }
+
+    forbid-map .tools .drawtype .area.active{
+        background: url(views/forbid/img/icon_road_blue.png) no-repeat;
+        color:#408ee6;
+    }
+
+    forbid-map .tools .drawtype .split{
+        float:left;width:1px;height:100%;background:#e5ebee;margin:0 11px
+    }
+
+    forbid-map .tools .line-panel{
+        margin-top:4px;
+        width:323px;
+        border-radius: 4px;
+        background: #fff;
+        padding-top:17px;
+        padding-bottom:24px;
+    }
+
+    forbid-map .tools .line-panel .switch{
+        background: url(views/forbid/img/icon_huhuan.png) no-repeat center center;
+        background-size: 22px 17px;
+        width:54px;
+    }
+
+    forbid-map .tools .line-panel .start-point{
+        position: relative;
+    }
+
+    forbid-map .btn-selAll{
+        width:72px;
+        height: 27px;
+        border:none;
+        border-radius: 4px;
+        background: #fff url(views/forbid/img/icon_allcheck.png) no-repeat 13px 8px;
+        background-size:12px 12px;
+        bottom:13px;
+        right:20px;
+        padding-left:23px;
+        position:absolute;
+        font-size:12px;
+        color:#408ee6;
+    }
+
+    forbid-map .btn-selAll .active{
+        background: #fff url(views/forbid/img/icon_allcheck.png) no-repeat 13px 8px;
+    }
+
+    forbid-map .tools .line-panel .points img{
+        position: absolute;
+        right:0;
+        top:5px;
+        width:16px;
+        height:16px;
+    }
+
+    forbid-map .tools .line-panel .start-point input{
+        background: url(views/forbid/img/route_start.png) no-repeat 0 center;
+        background-size: 10px 10px;
+    }
+
+    forbid-map .tools .line-panel .onway-point{
+        position: relative;
+    }
+
+    forbid-map .tools .line-panel .end-point{
+        position: relative;
+    }
+
+    forbid-map .tools .line-panel .end-point input{
+        background: url(views/forbid/img/route_end.png) no-repeat 0 center;
+        background-size: 10px 10px;
+    }
+
+    forbid-map .tools .line-panel input{
+        padding-left:18px;
+        width:251px;
+        height:35px;
+        border:none;
+
+    }
+
+    forbid-map .tools .search input{
+        border-radius: 4px;
+        border:solid 1px #d0d8df;
+        width:100%;
+        height:27px;
+        line-height:27px;
+        padding:0 10px;
+        padding-right:30px;
+    }
+
+    forbid-map .tools .search img{
+        width:14px;
+        height:14px;
+        position: absolute;
+        top:7px;
+        right:11px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="map" id="forbid_map" style="width:100%;height:100%">
+
+</div>
+
+<button ng-show="canEdit == 'true'" class="btn-selAll">全选</button>
+
+<div class="tools">
+    <div class="search">
+
+        <combo-poi-search ng-model="data.start" on-select="selectPoi(data)"/>
+
+        <img src="img/management/search.png"/>
+    </div>
+
+    <div class="drawtype" ng-show="canEdit == 'true'">
+        <span class="fl line"  ng-class="{active:curPassArea.areaType=='BROKEN_LINE'}" 
+        ng-click="toDrawLine($event)">线路</span>
+
+        <span class="split"/>
+
+        <span class="fl area" ng-class="{active:curPassArea.areaType=='AREA'}"
+        ng-click="toDrawRect();">区域</span>
+    </div>
+
+    <div style="clear:both;"></div>
+
+    <div class="line-panel" ng-show="showLinePanel" ng-click="clickLinePanel($event)">
+        <div class="w100 line-panel-content" style="display:flex">
+            <span class="fl switch" />
+            <div class="fl points">
+                <div class="start-point">
+                    <input placeholder="起 请输入起点"/>
+                    <img ng-show="onwayPoints.length == 0" src="views/forbid/img/icon_add_yuan.png" ng-click="addPoint()">
+                </div>
+
+                <div class="onway-point" ng-repeat="point in onwayPoints track by $index">
+                    <input placeholder="经 请输入途径点" ng-model="point.address"/>
+                    <img style="right:21px;" ng-show="onwayPoints.length == $index+1" src="views/forbid/img/icon_add_yuan.png" ng-click="addPoint()">
+                    <img src="views/forbid/img/icon_one.png" ng-click="removePoint($index)">
+                </div>
+
+                <div class="end-point">
+                    <input placeholder="终 请输入终点"/>
+                    <img src="views/forbid/img/icon_del_yuan.png">
+                </div>
+            </div>
+        </div>
+        <button class="btn-buildLine" ng-click="toBuildLine()">生成路线</button>
+    </div>
+</div>

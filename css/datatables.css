@@ -1,0 +1,226 @@
+td a{
+    color: #2a7cd9
+}
+tr:hover td{
+    background: #f0f6ff;
+}
+.table_select_bg{
+    background: #c5dffc
+}
+.dataTables_paginate{
+    display: inline-block;
+    padding-left: 0;
+    margin-top: 11px !important;
+    border-radius: 4px;
+    float: right;
+    margin-right: 15px !important;
+}
+
+.dataTables_paginate>li {
+    display: inline;
+}
+
+.dataTables_paginate>span>.current,
+.dataTables_paginate>span>.current:hover,
+.dataTables_paginate>span>.current:focus{
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #428bca !important;
+    border-color: #428bca !important;
+}
+.dataTables_paginate>span>span.ellipsis,
+.dataTables_paginate>span>span.ellipsis:hover,
+.dataTables_paginate>span>span.ellipsis:focus,
+.dataTables_paginate>a.disabled,
+.dataTables_paginate>a.disabled:hover,
+.dataTables_paginate>a.disabled:focus{
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd;
+}
+.dataTables_paginate>a.first{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.dataTables_paginate>a.last{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.select-checkbox{
+    text-align: center;
+    padding: 8px !important;
+}
+.dataTables_paginate>span>span.ellipsis,
+.dataTables_paginate>a,
+.dataTables_paginate>span>a,
+.dataTables_paginate>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px !important;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #7a7a7a;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd !important;
+}
+thead{
+    background-color: #f2f6f9;
+}
+.select-checkbox{
+    width:30px !important;
+}
+div.dataTables_wrapper div.dataTables_length select{
+    width: 100px;
+    display: inline-block;
+    height: auto !important;
+}
+.dataTables_info{
+    float: right;
+    margin-top: 11px;
+}
+.dataTables_length{
+    float: right;
+    height: auto !important;
+    margin: 11px 10px 0 !important;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 6px 8px 5px !important;
+}
+.dataTables_length>label{
+    margin: 0 !important;
+}
+.checkallDelete{
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 14px;
+}
+.checkallDelete input{
+    width: 14px;
+    height: 14px;
+}
+.allDelete{
+   line-height: 28px; margin-top: 14px; padding: 0px 20px; border-radius: 5px; border: 1px solid #ddd; display: inline-block; color: #7a7a7a;
+}
+.allDelete:hover{
+    border:1px solid #4293ee;
+    background-color: #fff;
+    color: #4293ee
+}
+.allDelete[disabled],.allDelete.disabled{
+    border:1px solid #c1cbd7;
+    background-color: #f6f8f9;
+    color: #c1cbd7;
+    cursor: not-allowed;
+}
+.pager_select{
+    display: inline-block;
+    width: auto;
+    height: 24px;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-top: 14px;
+}
+.pager_select a{
+    display: block;
+    width: 22px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    border:1px solid #dee5e9;
+    margin-left: 4px;
+    color: #7a7a7a;
+}
+.pager_select a.active{
+    background: #428bca;
+    color: #fff;
+    border:1px solid #428bca;
+}
+.pager_select a img{
+    vertical-align: middle;
+}
+.pager_select a.disabled{
+    cursor: not-allowed;
+    background: #fff;
+}
+.pager_select a.disabled:hover{
+    background: #ddd;
+}
+.pager_select_drop{
+    border:1px solid #dee5e9;
+    height: 24px;
+    background:#fff;
+    line-height: 24px;
+}
+.pager_total{
+    line-height: 24px;
+    padding: 0 10px;
+    margin-top: 14px;
+}
+.static_head_center{
+    text-align: center;
+}
+.static_head{
+    padding: 0;line-height: 70px;
+    background-color: #f2f6f9;
+}
+.static_head_boder{
+    border-right:1px solid #dee5e9
+}
+.static_progress{
+    display: inline-block;
+    width: calc(100% + 38px);
+    height: 19px;
+    line-height: 19px;
+    overflow: hidden;
+    margin: 0 -18px;
+}
+.static_progress span{
+    display: inline-block;
+    width: 30%;
+    height: 19px;
+    line-height: 19px;
+    font-size: 12px;
+    color: #000;
+    margin-left: 5px;
+    overflow-x: visible
+
+}
+.static_progress_redbg{
+    background: #fef2f2;
+}
+.static_progress_red{
+    background: #fa5d5d;
+}
+.static_progress_greenbg{
+    background: #effafb;
+}
+.static_progress_green{
+    background: #42c5c7;
+}
+.big-block .dataTables_wrapper{
+    padding: 0;
+}
+.static.dataTable{
+    margin: 0 !important;
+    margin-top: -1px !important;
+}
+/**
+table 排序图标
+ */
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after{
+    position: relative;
+    display: inline-block;
+    left: 10px;
+    top: 1px;
+}
+
+table.dataTable tbody th, table.dataTable tbody td{
+    padding: 10px 8px;
+}

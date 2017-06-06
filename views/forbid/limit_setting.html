@@ -1,0 +1,67 @@
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">限额配置</span>
+        <i class="icon-ask"></i>
+    </div>
+    <div class="w100 content_pd" style="height: calc(100% - 41px);padding-top: 15px;">
+        <div class="w100 white-bg full-height" style="overflow-y: auto;">
+            <section>
+            	<h5>单车次数限制</h5>
+            	
+            	<div class="form-radio-checkbox fl" style="width: 80px;padding-top: 4px;">
+				  <label>
+				    <input type="checkbox" >
+				    <span style="margin-left: 10px;">单车</span>
+				  </label>
+				</div>
+				<div class="inputbar sm fl" style="width: 100px;">
+	                <div class="dropBar dropdown fl" style="width: 100%;">
+	                    <div type="button" data-toggle="dropdown" style="text-align:center">
+	                                           每月<span class="caret"></span>
+	                    </div>
+	                    <ul class="dropdown-menu" role="menu">
+	                        <li>
+	                            <a>每月</a>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <div class="inputbar sm fl">
+	                <label class="fl" style="width: 55%;margin-right: 20px;">可申请临时通行最大次数</label>
+	                <input style="width: 30%;" type="text" ng-model="singleCarConfigValue" />
+	            </div>
+            	<div style="clear: both;"></div>
+            </section>
+            <section>
+            	<h5>每日总限额</h5>
+            	<div class="form-radio-checkbox fl" style="padding-top: 4px;">
+				  <label>
+				    <input type="checkbox" >
+				  </label>
+				</div>
+	            <div class="inputbar sm fl">
+	                <label class="fl" style="width: 43%;margin-right: 20px;">每日限行车辆总数</label>
+	                <input style="width: 30%;" type="text" ng-model="dailyLimitConfigValue" />
+	            </div>
+            	<div style="clear: both;"></div>
+            	
+            </section>
+            <section style="border-bottom: none;">
+            	<h5>限制机制</h5>
+            	<div class="form-radio-checkbox">
+				  <label ng-repeat="item in limitTypes" style="margin-right: 70px;">
+				    <input type="radio" name="limitType" ng-value="{{item.value}}" ng-model="configValue.limitType">
+				    <span>{{item.name}}</span>
+				  </label>
+				</div>
+            	
+            </section>
+            <div style="height: 60px;"></div>
+            
+        </div>
+        <div class="saveBar">
+	    	<button class="btn btn-primary">保存</button>
+		</div>
+        
+    </div>
+</div>

@@ -1,0 +1,72 @@
+.index_bg{
+	width: 100%;
+	background: url(../../img/index/background_homepage.png) no-repeat center;
+	background-size: 100% 100%;
+	overflow-y: scroll;
+}
+.index_bg ul{
+	padding-top: 200px;
+}
+.index_bg ul li{
+	width: 664px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.index_bg ul li a{
+	display: block;
+	width: 160px;
+	height: 160px;
+	margin: 0 6px 6px 0;
+	border-radius: 5px;
+	color: #fff;
+	overflow:hidden;
+}
+.index_bg ul li a img{
+	display: block;
+	width: 70px;
+	height: 70px;
+	margin: 30px auto 6px
+}
+.index_bg ul li a p{
+	font-size: 16px;
+	text-align: center;
+}
+.orange{
+	background: orange;
+}
+.yellow{
+	background: yellow;
+}
+.green{
+	background: green;
+}
+.blue{
+	background: #6c65f1;
+}
+.icon_btn{
+	display: inline-block;
+	height: 30px;
+	position: absolute;
+	right: 60px;
+	overflow:hidden;
+	padding-top: 2px;
+	top: 30px;
+}
+.icon_btn a{
+	width: 26px;
+	height: 26px;
+	background: url(../../img/index/icon_btn.png) no-repeat;
+
+}
+.icon_btn a.set{
+	background-position: -25px 0;
+}
+.icon_btn a.out{
+	background-position: -78px 0;
+	margin-left: 10px;
+}
+.index_logo{
+	position: absolute;
+	left: 60px;
+	top: 30px;
+}

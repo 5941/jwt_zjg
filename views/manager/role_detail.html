@@ -1,0 +1,124 @@
+<div class="row detailPop container-fluid" ng-class="{aniIn:popShow}" id="dd">
+    <div class="row" style="height: 40px;line-height: 40px;">
+        <i class="col-sm-2">
+            <img src="/img/management/icon_close.png" alt="关闭" ng-click="closePop();" class="btn">
+        </i>
+        <span class="col-sm-8 text-center">
+            <div class="btn-radio-group">
+                <span ng-class="{active:detail_show == 'info'}" ng-click="detail_show = 'info';">角色信息</span>
+                <span ng-class="{active:detail_show == 'member'}" ng-click="detail_show = 'member';">角色成员</span>
+            </div>
+        </span>
+        <span class="col-sm-2 text-right">
+            <span class="text-primary btn btn-link" ng-click="openEdit(detail.roleId)" actionbtn action='manager.role.edit' ng-show="canEdit">编辑</span>
+        </span>
+    </div>
+
+    <div class="hr-line-thin" style="margin: 0;"></div>
+
+    <div ng-show="detail_show == 'member'" style="height:100%;">
+        <div class="col-xs-6" >
+            <div js-tree="deptTreeConfig" ng-model="deptTreeData" 
+                    tree="treeInstance" tree-events-obj="treeEventsObj" 
+                    id="treeId" tree-events="select_node:select_node;"
+                    style="margin-top:10px"></div>
+        </div>
+
+        <div class="col-xs-6" style="height:100%;border-left:1px solid #e5e6e7;">
+            <div style="height:50px;width:100%; margin-top:15px;" ng-repeat="member in members">
+                <img alt="image" class="img-circle" src="img/management/icon_Head.png" style="float:left; margin-top:3px;">
+                <div style="width:calc(100% - 30px);float:left; padding-left:15px;" ng-click="openPop2(member)">
+                    <div>{{member.accountName}}</div>
+                    <div>{{member.deptName}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="detail_show == 'info'" style="height:100%;">
+        <div class="col-lg-12 full-width" full-scroll style="padding:0;">
+            <h3>基本信息</h3>
+
+            <div class="hr-line-thin" style="margin: 0;"></div>
+
+          
+            <div class="row" style="line-height:45px;">
+                <label class="col-sm-2 control-label text-right label-title">角色名称</label>
+                <label class="col-sm-2 control-label text-left label-value" ng-bind="detail.roleName"></label>
+            
+                <label class="col-sm-2 control-label text-right label-title">角色类型</label>
+                <label class="col-sm-2 control-label label-value" ng-bind="detail.roleTypeName" style="padding-right: 0;"></label>
+            
+            
+                <label class="col-sm-2 control-label text-right label-title">上级角色</label>
+                <label class="col-sm-2 control-label label-value" ng-bind="detail.parentRoleName"></label>
+            </div>
+
+            <div class="row" style="line-height:45px;">
+                <label class="col-sm-2 control-label text-right label-title">创建部门</label>
+                <label class="col-sm-4 control-label label-value" ng-bind="detail.deptName"></label>
+                
+                <label class="col-sm-2 control-label text-right label-title">备注</label>
+                <label class="col-sm-4 control-label label-value" ng-bind="detail.remark"></label>
+            </div>
+
+            <h3 style="display:inline-block;">角色权限</h3>
+           
+
+            <a class="tab-button" ng-class="{active:tab_view == 'action'}" ng-click="tab_view = 'action';">操作权限</a>
+
+             <a class="tab-button" ng-class="{active:tab_view == 'data'}" ng-click="tab_view = 'data';">数据权限</a>
+
+            <a  class="tab-button" ng-class="{active:tab_view == 'module'}" ng-click="tab_view = 'module';">系统模块</a>
+
+            <div class="hr-line-thin" style="margin: 0;"></div>
+
+            <div js-tree="moduleTreeConfig" ng-model="moduleTreeData" ng-show="tab_view == 'module'" style="margin-top:10px"></div>
+            
+            <div js-tree="actionTreeConfig" ng-model="actionTreeData" ng-show="tab_view == 'action'" style="margin-top:10px"></div>
+
+            <div class="dataList"  style="margin-top:10px" ng-show="tab_view == 'data'" >
+                <ul>
+                    <li ng-repeat="module in detail.roleModules" ng-show="module.useRule != 'FALSE'">
+                        <label for="">{{module.moduleName}}</label>
+                        <span>
+                            <input type="radio" disabled value="SELF" ng-model="module.dataRule"  name="{{module.moduleCode}}"> <label for="">仅限本人</label>
+                            <input type="radio" disabled value="DEPT" ng-model="module.dataRule"  name="{{module.moduleCode}}"> <label for="">所在部门</label>
+                            <input type="radio" disabled value="DEPT_AND_SUB_DEPT" ng-model="module.dataRule"  name="{{module.moduleCode}}"> <label for="">所在部门及下属部门</label>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .dataList{
+        width: 100%;
+        overflow:hidden;
+    }
+    .dataList ul{
+        width: 100%;
+        overflow:hidden;
+        list-style: none;
+        padding: 0;
+    }
+    .dataList ul li{
+        width: 100%;
+        height: 35px;
+        line-height: 35px;
+        border-bottom: 1px solid #f3f3f4;
+    }
+    .dataList ul li span{
+        display: inline-block;
+        width: 80%;
+        height: 35px;
+        line-height: 35px;
+        float: right;
+        text-align: right;
+    }
+    .dataList ul li span input{
+        margin:0 5px 0 30px;
+    }
+</style>
+

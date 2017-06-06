@@ -1,0 +1,145 @@
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">人员管理</span>
+        <i class="icon-ask"></i>
+
+        <a class="addBtn fr" ng-click="openNew()" actionbtn action='manager.person.create'>
+            <i class="glyphicon glyphicon-plus"></i> 新增人员
+        </a>   
+    </div>
+    <div class="w100" style="height: calc(100% - 40px)">
+         <div class="col-sm-2 full-height noPadding" >
+            <depttree instance="treeInstance" on-select="onTreeSelect(data)" data="deptnode"></depttree>
+        </div>
+        
+        <div class="animated fadeInRight col-sm-10 full-height" style="position: relative;">
+            <div class="w100 content" style="margin-bottom: 0; height: calc(100% - 73px); min-height: 0; overflow-y: auto;">
+                <form role="form" class="form-inline">
+                    <div class="advSearch" style="box-shadow: none; padding: 15px 0" >
+                        <div class="dropBar dropdown fl">
+                            <div type="button"
+                                 data-toggle="dropdown">
+                                {{search_type}}<span class="caret"></span>
+                            </div>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="item in search_types" ng-click="selectSearchType(item);"><a ng-bind="item"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropBar2 dropdown fl" ng-show="search_type == '性别' ">
+                            <div type="button"
+                                 data-toggle="dropdown" style="text-align: center;">
+                                {{sex_type}}<span class="caret"></span>
+                            </div>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="item in sex_types" ng-click="selectSexType(item,true);"><a ng-bind="item"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropBar2 dropdown fl" ng-show="search_type == '人员类型' ">
+                            <div type="button"
+                                 data-toggle="dropdown" style="text-align: center;">
+                                {{inputs.personKind.personKindName}}<span class="caret"></span>
+                            </div>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="item in personKinds" ng-click="selectPersonKind(item,true);"><a ng-bind="item.personKindName"></a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="dropBar fl noBorder noPadding" ng-show="search_type=='管理部门'" style="position: relative;">
+                            <combotree on-select="onTreeSelect2(data)"  data="dept" type="dept"></combotree> 
+                        </div>
+                        <div class="search_input fl" ng-show="search_type == '警员'">
+                            <person-typeahead ng-model="inputs.personCode" on-select="selectPerson($item)" options="{placeholder:'请输入警号或警员姓名'}"/>
+                            <img src="/img/management/search.png" style="cursor: pointer;" ng-click="refreshTable();">
+                        </div>
+                        <div toggle-addon class="fl toggle_btn">
+                            <label class="small text-primary" style="margin-left: 15px;">高级筛选</label>
+                            <img src="img/management/screen.png" style="cursor:pointer;">    
+                        </div>
+
+                        <button type="button" class="btn btn-default fr" ng-click="openColumnDef();" tooltip-placement="left" uib-tooltip="自定义列表项" style="color:#747F8C">
+                            <i class="glyphicon glyphicon-cog"></i>
+                        </button>
+                        <div style="clear: both;"></div>
+                    </div>
+
+                </form>
+                <form class="form-inline" role="form">
+                    <div id="addon" class="advSearch_bar" style="box-shadow: none;" >
+                        <div class="inputbar fl">
+                            <label class="fl">警员</label>
+                            <person-typeahead ng-model="inputs.personCode" class="fl" />
+                        </div>
+                        <div class="inputbar fl">
+                            <label class="fl">联系电话</label>
+                            <input class="fl" placeholder="请输入联系电话" type="text" ng-model="inputs.phone">
+                        </div>
+                        <div class="inputbar fl">
+                            <label class="fl">性别</label>
+                            <div class="dropBar dropdown fl">
+                                <div type="button"
+                                     data-toggle="dropdown" style="text-align: center;">
+                                    {{sex_type}}<span class="caret"></span>
+                                </div>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li ng-repeat="item in sex_types" ng-click="selectSexType(item,false);"><a ng-bind="item"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="inputbar fl">
+                            <label class="fl">人员类型</label>
+                            <div class="dropBar dropdown fl">
+                                <div type="button"
+                                     data-toggle="dropdown" style="text-align: center;">
+                                    {{inputs.personKind.personKindName}}<span class="caret"></span>
+                                </div>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li ng-repeat="item in personKinds" ng-click="selectPersonKind(item,false);"><a ng-bind="item.personKindName"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="w100 text-right">
+                            <div class="col-lg-4 col-lg-offset-8">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" ng-model="inputs.check_subDept">搜索包括下级部门
+                                </label>
+                                <div class="btn btn-primary" ng-click="refreshTable()">搜索</div>
+                                <div class="btn btn-default" ng-click="inputs = {   personCode: '',
+                                                                                    personName: '',
+                                                                                    phone: '',
+                                                                                    selectSexual: '',
+                                                                                    personKind: {
+                                                                                        personKindId:'',
+                                                                                        personKindName:'全部'
+                                                                                    },
+                                                                                    check_subDept: true
+                                                                                }; sex_type='全部';">清除</div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row" style="">
+                    <!-- data table -->
+                     <table datatable="" dt-instance="dtInstance" dt-options="dtOptions" dt-columns="dtColumns" class="table table-hover">
+                    </table>
+                </div>
+            </div>
+            <div class="w100 btnbar" style="width:calc(100% - 30px) !important; position: absolute; left: 15px; bottom: 0;">
+                <span class="checkallDelete fl">
+                    <input type="checkbox" ng-model="allSelected" ng-click="toggleAll()"/>
+                </span>
+                <a class="allDelete fl" actionbtn action='manager.person.delete' ng-class="{disabled:selectedCount()<=0}" ng-click="deleteRows()">
+                    删除
+                </a>
+                <div pager dt-instance="dtInstance" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include="'views/framework/person_detail.html'"></div>

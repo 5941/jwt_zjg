@@ -1,0 +1,19 @@
+<div class="form-control b-r-md comboTreeInput" ng-click="showSelect = true;" required style="position:relative;">
+    {{data.text}}
+    <span class="caret" style="position:absolute; right:10px; top:14px"></span>
+    
+    </div>
+
+<span class="span-warning" ng-show="mainForm.personKindId.$dirty && mainForm.personKindId.$invalid && mainForm.personKindId.$error.required">此项必填</span>
+<div class="comboTree white-bg"  onmouseover="isComboTreeOut=false" onmouseoout="isComboTreeOut=true" style="position:absolute; width:calc(100% - 30px); margin:0 15px;display: none; box-sizing:border-box; height:300px; left:0; top:35px; border:1px solid #ccc; border-radius:5px;z-index:9999; background:#fff;padding:10px 0 0; overflow: auto;">
+            <div js-tree="treeConfig" ng-model="treeData" 
+                tree="treeInstance" tree-events-obj="treeEventsObj" id="treeId" tree-events="select_node:select_node;loaded:loaded"></div>
+</div>
+<style type="text/css">
+	.jstree-node{
+		height: 100%;
+	}
+	.jstree-container-ul{
+		height: 100%;
+	}
+</style>

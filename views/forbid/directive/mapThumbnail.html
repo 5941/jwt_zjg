@@ -1,0 +1,19 @@
+
+<div class="map-thumbnail-box" ng-class="{'equal-scale':_option.equalScale}">
+
+    <div class="map-thumbnail-control">
+        <i class="map-thumbnail-deletebtn fr" ng-click="deleteArea(areaData)"></i>
+        <i class="map-thumbnail-editbtn fr" ng-click="editArea(areaData)"></i>
+        <div class="clearfix"></div>
+    </div>
+    <div class="map-thumbnail-img-box">
+        <img class="map-thumbnail-img" ng-src="{{areaData[_option.urlName]}}" alt="缩略图"
+            ng-click="imgClick()">
+    </div>
+    <div class="map-thumbnail-mask" ng-click="maskClick()">
+        <div class="map-thumbnail-text">
+            {{areaData[_option.maskTextName]}}
+        </div>
+    </div>
+    <div class="map-thumbnail-dummy"></div>
+</div>

@@ -1,0 +1,324 @@
+<style type="text/css">
+    .edit-forbid-range {
+        width: 100%;
+        height: calc(100% - 50px);
+        top: 50px;
+        left: 0;
+        z-index: 50;
+        position: fixed;
+        background: #fff;
+        display: flex;
+        flex-direction: column
+    }
+
+    .edit-forbid-range .range-list {
+        width: 237px;
+        height: 100%;
+        border-right: solid 1px #c1cbd8
+    }
+
+    .edit-forbid-range .range-list .title {
+        height: 37px;
+        line-height: 37px;
+        padding: 0 15px;
+        border-bottom: solid 1px #dfe4ea
+    }
+
+    .edit-forbid-range .range-list .item {
+        height: 63px;
+        padding-left: 15px;
+    }
+
+    .edit-forbid-range .range-list .item.active {
+        background: #e3f0ff;
+    }
+
+    .edit-forbid-range .range-list .item .fav {
+        background: url(views/forbid/img/icon_star.png) no-repeat;
+        background-size: 16px 15px;
+        display: inline-block;
+        width: 16px;
+        height: 15px;
+        cursor: pointer;
+    }
+
+    .edit-forbid-range .range-list .item .fav.active {
+        background: url(views/forbid/img/icon_star_yellow.png) no-repeat;
+    }
+
+    .edit-forbid-range .range-list .item .del {
+        background: url(views/forbid/img/icon_delete_gray.png) no-repeat;
+        background-size: 14px 14px;
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        margin-left: 14px;
+    }
+
+    .edit-forbid-range .range-list .item .del:hover {
+        background: url(views/forbid/img/icon_delete.png) no-repeat;
+    }
+
+    .edit-forbid-range .range-list .item .row1 {
+        height: 16px;
+        line-height: 16px;
+        padding-right: 11px;
+    }
+
+    .edit-forbid-range .range-list .item .row2 {
+        height: 12px;
+        line-height: 12px;
+        padding-right: 11px;
+        text-overflow: ellipsis;
+        margin-top: 10px;
+    }
+
+    .edit-forbid-range .range-list .item .wrapper {
+        border-bottom: solid 1px #dfe4ea;
+        padding-top: 12px;
+        padding-bottom: 14px;
+    }
+
+    .edit-forbid-range .range-name-area {
+        height: 60px;
+        background: #fafbfc;
+        border-top: solid 1px #c1cbd8;
+        padding: 16px 17px;
+    }
+
+    .edit-forbid-range .range-common-list {
+        width: 180px;
+        height: 100%;
+        background: #f6f9fa;
+        border-right: solid 1px #c1cbd8;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .edit-forbid-range .range-common-list .title {
+        height: 37px;
+        line-height: 37px;
+        border-bottom: solid 1px #dfe4ea;
+        padding: 0 15px;
+    }
+
+    .edit-forbid-range .range-common-list .list {
+        padding: 0 15px;
+        background: #f6f9fa;
+        flex:1
+    }
+
+    forbid-map {
+        flex: 1;
+        height: 100%
+    }
+
+
+    .edit-forbid-range .showCommonRange {
+        position: absolute;
+        top: 4px;
+        left: 8px;
+        width: 27px;
+        height: 27px;
+        background: #fff url(views/forbid/img/zhankai.png) no-repeat center center;
+        background-size: 12px 12px;
+        border-radius: 2px;
+    }
+
+    .edit-forbid-range .range-common-search{
+        padding: 0 15px;
+        position: relative;
+    }
+
+    .edit-forbid-range .range-common-search input {
+        border-radius: 4px;
+        border: solid 1px #d0d8df;
+        width: 100%;
+        height: 25px;
+        line-height: 25px;
+        padding: 0 10px;
+        margin-top: 12px;
+        position: relative;
+    }
+
+    .edit-forbid-range .range-common-item{
+        width:148px;
+        height:90px;
+        border:solid 1px #dfe4ea; 
+        margin-top:12px;
+        position: relative;
+    }
+
+    .edit-forbid-range .range-common-item:hover .range-common-item-hint{
+        display: block;
+        background: #000;
+        opacity: 0.5;
+        color:#fff;
+        width:100%;
+        height:100%;
+        padding:10px;
+        font-size: 11px;
+        cursor: pointer;
+    }
+
+    .edit-forbid-range .range-common-item-hint{
+        position: absolute;
+        left:0;
+        top:0;
+        display: none;
+    }
+
+    .edit-forbid-range .range-common-item img{
+        width:100%;
+        height:100%;
+    }
+
+    .edit-forbid-range .range-common-search img {
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        top: 18px;
+        right: 28px;
+        cursor: pointer;
+    }
+
+    .edit-forbid-range .range-common-img {
+        width: 147px;
+        height: 90px;
+        border: solid 1px #dfe4ea;
+        margin-top: 12px;
+    }
+
+    .edit-forbid-range .img-fav {
+        width: 16px;
+        height: 15px;
+        margin-left: 17px;
+        cursor: pointer;
+    }
+
+    .edit-forbid-range .btn-save {
+        background: #4293ee;
+        color: #fff;
+        width: 70px;
+        height: 25px;
+        border-radius: 4px;
+        border: none;
+    }
+
+    .preview .btn-save {
+        background: #4293ee;
+        color: #fff;
+        width: 70px;
+        height: 25px;
+        border-radius: 4px;
+        border: none;
+    }
+
+    .edit-forbid-range .btn-clear {
+        background: #ffffff;
+        color: #000;
+        width: 70px;
+        height: 25px;
+        border-radius: 4px;
+        border: solid 1px #c1cbd7;
+    }
+
+    .preview{
+        width: 90%;
+        height: 90%;
+        border: solid 1px #fff;
+        top: 5%;
+        left: 5%;
+    }
+</style>
+<div class="edit-forbid-range">
+    <div class="w100 header" style="border-bottom:solid 1px #c1cbd8;height:40px">
+        <span class="in-title" style="border-left:solid 4px #2a7cd9;padding-left:10px;">绘制地图</span>
+        <span class="return_btn" ng-click="close()">返回</span>
+        <a class="fr" style="margin-left:15px;" ng-click="preview()">预览</a>
+        <a class="fr" ng-click="submit()">提交</a>
+    </div>
+    <div class="w100" style="display:flex;flex:1;">
+        <div class="range-list">
+            <div class="w100 fl title">
+                <span class="fl">通行范围</span>
+                <img class="fr" style="margin-top:11px;cursor:pointer" ng-click="addDefPassArea()" src="views/forbid/img/icon_add.png" />
+            </div>
+            <div class="w100 item" style="cursor:pointer" 
+                ng-class="{active:passArea == curPassArea}"
+                ng-repeat="passArea in passAreas track by $index" 
+                ng-click="selectPassArea(passArea);">
+                <div class="w100 full-height wrapper">
+                    <div class="w100 fl row1">
+                        <img ng-show="passArea.pointList != '[]' && passArea.areaRange != ''" src="views/forbid/img/icon_Checkmark.png" style="height:16px;width:16px;margin-right:11px" class="fl">
+
+                        <img ng-hide="passArea.pointList != '[]' && passArea.areaRange != ''" src="views/forbid/img/no_Checkmark.png" style="height:16px;width:16px;margin-right:11px" class="fl">
+
+                        <span>通行范围{{$index+1}}</span>
+
+                        <a class="fr del" ng-click="deletePassArea($index)"/>
+
+                        <a class="fr fav" ng-click="passArea.useType != 'LONG'?passArea.useType = 'LONG':passArea.useType = 'TEMP'" ng-class="{active:passArea.useType == 'LONG'}" />
+
+                    </div>
+                    <span class="w100 fl row2">{{passArea.areaRange}}</span>
+                </div>
+            </div>
+        </div>
+        <div style="flex:1;height:100%;display:flex;flex-direction:column">
+            <div style="flex:1;display:flex;position:relative">
+                <div class="range-common-list" ng-show="showCommonRange">
+                    <div class="w100 fl title">
+                        <span class="fl">常用通行</span>
+                        <img class="fr" style="margin-top:11px" src="views/forbid/img/shouqi_lan.png" ng-click="showCommonRange = false;" />
+                    </div>
+
+                    <div class="range-common-search">
+                        <input placeholder="请输入通行名称" ng-model="keyword" ng-change="loadPassAreas(keyword);"/>
+                        <img src="img/management/search.png" />
+                    </div>
+
+                    <div class="w100 list" style="overflow-y:auto">
+                        <div class="range-common-item" ng-repeat="passArea in commonPassAreas" ng-click="selectCommonPassArea(passArea)">
+                            <img src="{{passArea.thumbUrl}}">
+
+                            <div class="range-common-item-hint">
+                                {{passArea.areaRange}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <forbid-map instance="forbidMap" can-edit="true" pass-area="curPassArea" />
+
+                <div class="showCommonRange" ng-click="showCommonRange = true;" ng-hide="showCommonRange">
+                </div>
+            </div>
+            <div class="w100 range-name-area">
+                <label class="fl" style="height:26px;line-height:26px;margin-right:15px;">
+                    <span style="color: red;">*</span>通行范围
+                </label>
+
+                <input placeholder="请输入通行范围" ng-model="curPassArea.areaRange" style="width:400px;height:26px;padding-left:11px" />
+
+                <img ng-show="curPassArea.useType == 'LONG'" ng-click="curPassArea.useType = 'TEMP'" src="views/forbid/img/icon_star_yellow.png" class="img-fav">
+
+                <img ng-hide="curPassArea.useType == 'LONG'" ng-click="curPassArea.useType = 'LONG'" src="views/forbid/img/icon_star.png" class="img-fav">
+
+                <button class="fr btn-clear" ng-click="clearDraw()">清除</button>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade preview" id="edit-forbid-range-map-preview" role="dialog" aria-hidden="true">
+    <div style="width:100%;height:100%;display:flex;flex-direction:column">
+        <view-forbid-range instance="previewMap" pass-areas="passAreas" style="height:calc(100% - 48px);width:100%"/>
+
+        <div style="height:48px;background:#fff;">
+            <button class="fr btn-save" ng-click="closePreview()" style="margin:12px 16px">提交</button>
+        </div>
+    </div>
+</div>

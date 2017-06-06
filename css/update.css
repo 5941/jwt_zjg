@@ -1,0 +1,63 @@
+.update_content{
+	width: calc(100% - 30px);
+	margin: 0 auto;
+	overflow: hidden;
+	color: #999999;
+	font-size: 13px;
+	height: 100%;
+}
+.update_head_action{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ccc;
+	position: relative;
+}
+.update_content ul{
+	height: auto;
+}
+.update_content ul li{
+	word-wrap: break-word;
+	padding: 0 15px;
+	line-height: 35px;
+	color:#000;
+}
+.update_content ul li.update_header{
+	background:url(../../img/test_alcohol/pic_icon.png) 15px center no-repeat;
+	background-color:  #f5f8fb ;
+	padding-left: 25px;
+	color: #6e6f74
+}
+.update_bottom{
+    background: #f5f8fb;
+    border-top: 1px solid #dee5e9;
+    line-height: 45px;
+    height: 45px;
+    position: absolute;
+    left: 0;
+    bottom:0;
+    color: #999;
+}
+.update_bottom span{
+    padding-right: 15px;
+    color: #000;
+}
+.update_content plateinput,.update_content driverinput,.update_content person-typeahead,.update_content combotree{
+	width: 75%;
+	height: 30px;
+	line-height: 30px;
+}
+.update_content .comboTree{
+	width: 75% !important;
+	left:25%  !important;
+}
+.update_content person-typeahead input{
+	width: 100% !important
+}
+.update_content plateinput li{
+	padding: 0;
+}
+.update_content
+.parsley-required {
+    color: #f00 !important;
+}

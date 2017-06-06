@@ -1,0 +1,27 @@
+@keyframes detailShow {
+    0% {
+        right: -500px;
+    }
+    100% {
+        right: 15px;
+    }
+}
+
+.isShow {
+    animation: detailShow .2s forwards;
+    -moz-animation: detailShow .2s forwards;
+    -webkit-animation: detailShow .2s forwards;
+    -o-animation: detailShow .2s forwards;
+}
+
+.detailPop {
+    right: -500px;
+    top: 0;
+    width: 500px;
+    height: 100%;
+    border-left: thin solid lightgrey;
+    background-color: white;
+    overflow: hidden;
+    position: absolute;
+    z-index: 999;
+}

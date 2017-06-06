@@ -1,0 +1,10 @@
+<div class="pager_select fr">
+    <a ng-class="{disabled:disableFirst}" class="fl" ng-click="goFirst()"><img src="img/framework/table_first.png"></a>
+    <a ng-class="{disabled:disablePrior}" class="fl" ng-click="goPrior()"><img src="img/framework/table_prior.png"></a>
+    <a ng-repeat="pageNum in pageNums track by $index" ng-click="changePage(pageNum)" ng-class="{active:currentPage == pageNum,disabled:pageNum== '...'}" class="fl">{{pageNum}}</a>
+    <a ng-class="{disabled:disableNext}" class="fl" ng-click="goNext()"><img src="img/framework/table_next.png"></a>
+    <a ng-class="{disabled:disableLast}" class="fl" ng-click="goLast()"><img src="img/framework/table_last.png"></a></div>
+    <div class="pager_select fr">
+    <select class="pager_select_drop" ng-change="changeSize()" ng-model="page.length" ng-options="pageSize.value as pageSize.name for pageSize in pageSizes">
+    </select></label></div>
+<div class="pager_total fr">共 {{page.total}} 笔数据</div>

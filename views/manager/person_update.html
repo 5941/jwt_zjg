@@ -1,0 +1,91 @@
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">{{action}}人员</span>
+        <i class="icon-ask"></i>
+        <span class="return_btn" ui-sref="main.person">返回</span>
+    </div>
+    <div class="wrapper-content">
+        <div class="w100 edit" style="overflow: visible">
+            <form class="form-horizontal" role="form" name="mainForm" novalidate>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        <span style="color: red;">*</span>
+                        人员代码：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="请输入人员代码" maxlength="30" class="form-control b-r-md" required ng-model="person.personCode" name="personCode">
+                        <span class="span-warning" ng-show="mainForm.$dirty && mainForm.personCode.$invalid">此项必填</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        <span style="color: red;">*</span>
+                        人员姓名：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="请输入人员姓名" maxlength="50" class="form-control b-r-md" required ng-model="person.personName" name="personName">
+                        <span class="span-warning" ng-show="mainForm.$dirty && mainForm.personName.$invalid">此项必填</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        <span style="color: red;">*</span>
+                        性别：
+                    </label>
+                    <div class="col-sm-4">
+                        <select class="form-control b-r-md" ng-model="person.sex" ng-options="x.key as x.value for x in [{key:'MALE',value:'男'},{key:'FEMALE',value:'女'}]" required name="sex"></select>
+                        <span class="span-warning" ng-show="mainForm.$dirty && mainForm.sex.$invalid">此项必填</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        <span style="color: red;">*</span>
+                        人员类型：
+                    </label>
+                    <div class="col-sm-4">
+                        <select class="form-control b-r-md" ng-model="person.personKindId" ng-options="v.personKindId as v.personKindName for v in personKind" required name="personKindId"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">管理部门：</label>
+                    <div class="col-sm-4">
+                         <combotree data="dept" type="dept"></combotree>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">身份证号：</label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="50" placeholder="请输入身份证号" class="form-control b-r-md" ng-model="person.idNumber">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        <span style="color: red;">*</span>
+                        联系电话：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="50" placeholder="请输入联系电话" class="form-control b-r-md" ng-model="person.phone" name="phone" required>
+                        <span class="span-warning" ng-show="mainForm.$dirty && mainForm.phone.$invalid && !mainForm.phone.$error.required ">请输入正确的手机号</span>
+                        <span class="span-warning" ng-show="mainForm.$dirty && mainForm.phone.$invalid && mainForm.phone.$error.required">此项必填</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">家庭住址：</label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="200" placeholder="请输入家庭住址" class="form-control b-r-md" ng-model="person.address">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">备注：</label>
+                    <div class="col-sm-4">
+                        <textarea type="text" maxlength="500" placeholder="请输入..." class="form-control b-r-md" ng-model="person.remark"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="w100 btnbar">
+            <button ui-sref="main.person">取消</button>
+            <button id="edit" ng-click="doSave()">保存</button>
+        </div>
+    </div>
+</div>

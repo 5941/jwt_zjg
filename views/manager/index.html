@@ -1,0 +1,17 @@
+<div class="full-height index_bg">
+	<ul class="w100">
+		<div class="index_logo">
+			<img src="img/index/logo.png">
+		</div>
+		<div class="icon_btn">
+			<a ng-click="changePwd()" class="fl set"></a>
+			<a ng-click="logout()" class="fl out"></a>
+		</div>
+		<li>
+			<a ng-repeat="module in modules" href="javascript:void(0)" ng-show="module.moduleType=='BOTH'||module.moduleType=='WEB'" ng-click="goModule(module)" class="fl" style="background:{{colors[module.moduleCode]}}">
+				<img src="img/index/{{module.moduleCode}}.png">
+				<p>{{module.moduleName}}</p>
+			</a>
+		</li>
+	</ul>
+</div>

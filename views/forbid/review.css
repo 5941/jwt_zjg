@@ -1,0 +1,129 @@
+.dropBar,.comboTreeInput{
+    padding-left: 8px !important;
+}
+.btn-primary {
+    /*background: #fff !important;*/
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+    padding-left: 25px;
+}
+table.dataTable tbody th, table.dataTable tbody td{
+    padding: 10px 25px;
+}
+ .btn .caret{position: absolute; right: 5px; top: 12px;
+}
+.tabA{
+    display: inline-block;
+    line-height: 40px;
+    margin-left: 20px;
+    padding: 0 5px;
+    color: #000;
+}
+.actived{
+    color: #2a7cd9;
+    border-bottom:2px solid #2a7cd9;
+}
+.form-control{
+    height: 30px;
+}
+.comboTree{
+    width: 100% !important;
+    margin: 0 !important;
+}
+.jstree-default .jstree-node{
+    margin-left: 0;
+}
+.dropBar{
+    border-radius: 5px !important;
+    width: 75%;
+    margin:0;
+}
+.input_group{
+    min-width: 307px !important;
+}
+.input_group label{
+    line-height: 30px;
+    text-align: right;
+    padding-right: 5px;
+}
+.input_group input{
+    border-radius: 5px !important;
+    height: 30px;
+    line-height: 30px;
+}
+.warning_info{
+    position: absolute;
+    left: calc(25% + 10px);
+    top: 25px;
+    color: #f00;
+}
+textarea{
+    width: 100%;
+    border:1px solid #dee5e9;
+    padding: 0 5px;
+    border-radius: 5px !important;
+}
+.input_group label span{
+    margin: 0 !important;
+    color: #f00 !important;
+}
+input[disabled]{
+    background: #f4f7f9
+}
+@keyframes inShow {
+    0% {
+        right: -626px;
+    }
+    100% {
+        right: 15px;
+    }
+}
+@-webkit-keyframes inShow {
+    0% {
+        right: -626px;
+    }
+    100% {
+        right: 15px;
+    }
+}
+.detailPop.aniIn {
+    -webkit-animation: inShow .1s forwards;
+    -moz-animation: inShow .1s forwards;
+    -o-animation: inShow .1s forwards;
+    animation: inShow .1s forwards;
+}
+.detailPop {
+    padding-top: 50px;
+    top: 0;
+    width: 626px;
+    right: -626px;
+    height: 100%;
+    border-left: thin solid lightgrey;
+    background-color: white;
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 9;
+}
+.span-warning{
+    position: absolute;
+    right: -50px;
+    top: 8px;
+    color: red;
+}
+.plateBox{
+    height: 30px;
+    line-height: 30px;
+    border-radius: 4px;
+    border:1px solid #333;
+    width: 85px;
+    text-align: center;
+}
+.plateBox.yellowPlate{
+    background: #f5da17;
+    border:1px solid #f5da17;
+}
+.plateBox.bluePlate{
+    background: #4293ee;
+    border:1px solid #4293ee;
+    color: #fff;
+}

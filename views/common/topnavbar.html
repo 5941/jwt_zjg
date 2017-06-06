@@ -1,0 +1,119 @@
+
+<script>
+    var account = JSON.parse(window.localStorage.getItem('account'));
+    $('#master').text(account.accountName)
+</script>
+<style>
+.icon-top{
+    width: 164px;
+    height: 23px;
+    margin:0;
+    margin-top: -5px;
+    margin-right: 16px;
+}
+.logo,.whole{
+    display: inline-block;
+    line-height: 50px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bolder;
+    padding-left: 16px;
+}
+.logo:hover{
+    color: #fff;
+}
+.whole{
+    padding-left: 0;
+}
+.navbar-top-links .dropdown-menu{
+    min-width:100px;
+    border-radius: 0px;
+}
+
+.navbar-top-links .dropdown-menu li a {
+    padding:0;
+    min-height: 0;
+    height: 25px;
+    border-radius: 0px;
+    margin: 0;
+    line-height: 25px;
+    display: inline-block;
+    background-color: #fff;
+    color:#000;
+} 
+
+.navbar-top-links .dropdown-menu li a:hover{
+    background-color: #4293ee;
+    color:#fff;
+}
+
+.navbar-top-links .dropdown-menu li:hover{
+    background-color: #4293ee;
+}
+
+.password a{
+    background:url(img/framework/icon_home_password.png)  10px center no-repeat;
+    text-indent: 30px;
+}
+
+.password a:hover{
+    background:url(img/framework/icon_home_password_focus.png)  10px center no-repeat;
+}
+
+.logout a{
+    background:url(img/framework/icon_home_signout.png)  10px center no-repeat;
+    text-indent: 30px;
+}
+
+.logout a:hover{
+    background:url(img/framework/icon_home_signout_focus.png)  10px center no-repeat;
+}
+</style>
+<div class="row bg-primary" topnavbar>
+    <audio id="musicAlarm" src="" autoplay="autoplay" loop="loop">
+    </audio>
+    <nav class="navbar navbar-fixed-top bg-primary" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="logo" href="{{moduleIndexUrl}}"><img class="icon-top" src="views/{{moduleCode}}/img/logo.png"></a>
+            <a class="whole"><img src="img/management/icon_whole3.png" style=" width:20px; height:20px;margin-top: -3px"></a>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li uib-dropdown ng-show="!showMessage && moduleCode=='key_vehicle'" ng-click="goAlarm();">
+                <a class="count-info" href uib-dropdown-toggle>
+                    <i class="fa icon-xinxi"></i>
+                </a>
+            </li>
+            <li uib-dropdown ng-show="showMessage && moduleCode=='key_vehicle'" ng-click="goAlarm();">
+                <a class="count-info" href uib-dropdown-toggle>
+                    <i class="fa icon-youxinxi"></i>
+                </a>
+            </li>
+            <li uib-dropdown>
+                <a class="count-info" href uib-dropdown-toggle>
+                    <i class="fa icon-phone"></i>
+                </a>
+            </li>
+            <li uib-dropdown>
+                <a class="count-info" href uib-dropdown-toggle>
+                    <i class="fa fa-envelope"></i>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <i class="fa" style="margin-top:-5px;">
+                        <img alt="image" class="img-circle" src="{{avatar}}"/>
+                    </i>
+                </a>
+            </li>
+            <li uib-dropdown>
+                <a uib-dropdown-toggle href>
+                    <strong class="font-bold block"><span id="master"></span><b class="caret"></b></strong>
+                </a>
+                <ul uib-dropdown-menu class="animated m-t-ms">
+                    <li class="password"><a ng-click="changePwd()">修改密码</a></li>
+                    <li class="logout"><a ng-click="logout()">退出登录</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>

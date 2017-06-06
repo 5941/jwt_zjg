@@ -1,0 +1,285 @@
+.input_group{
+	line-height: 30px;
+	height: 30px;
+}
+.input_group label {
+    line-height: 30px;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.input_group input {
+    border-radius: 5px !important;
+    height: 30px;
+    line-height: 30px;
+}
+
+.input_group .dropBar {
+    border: 1px solid #dee5e9;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 8px;
+}
+
+.dropBar {
+    border-radius: 5px !important;
+    width: 75%;
+    margin: 0;
+}
+
+.btn-add{
+	height:32px;
+	line-height:32px;
+	background:#f5f8fb;
+	margin:0 0 40px 0;
+	text-align:center;
+	border:dashed 1px #c1cbd8;
+	color:#408ee6;
+}
+
+.btn-add span{
+	background:url(img/btn_add_car.png) no-repeat;
+	background-size:14px 14px;
+	padding-left: 20px;
+}
+
+.btn-delete-img{
+	width:14px;
+	height:14px;
+	position: absolute;
+	top:-6px;
+	right:-4px;
+}
+
+.img-attach{
+	position: relative;
+	width:82px;
+	height:50px;
+	float:left;
+	margin-right: 8px;
+	cursor:pointer;
+}
+
+img[imageupload]{
+	width:82px;height:50px;
+	z-index: 10;
+}
+.img_name{
+	position: absolute;
+	color:#a6b2bd;
+	top:30px;
+	width:100%;
+	font-size:12px;
+	text-align: center;
+	z-index:0;
+	line-height:12px;
+}
+
+.img-attach-add{
+
+}
+ul.step-round{
+	display: flex;
+}
+
+.step-round li{
+	margin:0 !important;
+}
+
+.step-round li a{
+	display: block;
+	width:100%;
+}
+
+.step-round li:first-child a:after {
+    left: 25px !important;
+}
+
+.step-round li:last-child a:after {
+    right: 25px !important;
+}
+
+driverinput, plateinput{
+	width:75% !important;
+}
+
+.w30.input_group{
+	overflow: visible;
+}
+
+.btn-hecha{
+	width:56px;height:30px;
+	text-align:center;line-height:30px;
+	color:#85b1e9;cursor:pointer;
+	text-decoration:underline
+}
+
+.input_passArea{
+	display: flex;
+	overflow: visible;
+}
+.input_passArea combo-pass-area{
+	flex:1;
+}
+
+.input_group combo-poi-search{
+	flex:1;
+}
+
+.draw-line{
+	position:absolute;width:98px;height:26px;
+	background:#fff;border:solid 1px #e5ebee;
+	border-radius:2px;right:4px;top:4px;
+	text-align: center;
+	line-height: 26px;
+	color:#81b2f2;
+	text-decoration:underline;
+	cursor: pointer;
+}
+
+.btn-primary{
+	width:70px;
+	height:30px;
+	line-height:30px;
+	border:solid 1px #4293ee;
+	color:#4293ee;
+	border-radius: 4px;
+	background: #fff;
+}
+
+.btn-cancel{
+	width:70px;
+	height:30px;
+	line-height:30px;
+	border:solid 1px #dadada;
+	color:#000;
+	border-radius: 4px;
+	background: #f9f9f9;
+}
+
+.input_passArea button{
+	margin-left:34px;
+}
+
+.input_passArea .icon{
+	height:15px;
+	width:15px;
+	background: url(img/no_Checkmark.png) no-repeat;
+	background-size: 15px 15px;
+	margin-top:5px;
+	margin-left:9px;
+}
+
+.input_passArea .icon.isDone{
+	background: url(img/icon_Checkmark.png) no-repeat;
+	background-size: 15px 15px;
+}
+
+
+.range-common-list {
+	width: 218px;
+	height: 100%;
+	background: #fff;
+	border-right: solid 1px #c1cbd8;
+	display: flex;
+	flex-direction: column;
+	border:solid 1px #b6c2d0;
+	font-size:12px
+}
+
+.range-common-list .title {
+	height: 37px;
+	line-height: 37px;
+	border-bottom: solid 1px #dfe4ea;
+	padding: 0 15px;
+}
+
+.range-common-list .list {
+	padding: 0 15px;
+	background: #fff;
+	flex:1
+}
+
+.showCommonRange {
+	position: absolute;
+	top: 4px;
+	left: 8px;
+	width: 27px;
+	height: 27px;
+	background: #fff url(img/zhankai.png) no-repeat center center;
+	background-size: 12px 12px;
+	border-radius: 2px;
+}
+
+ .range-common-search{
+        padding: 0 15px;
+		position: relative;
+		
+    }
+
+     .range-common-search input {
+        border-radius: 4px;
+        border: solid 1px #d0d8df;
+        width: 100%;
+        height: 25px;
+        line-height: 25px;
+        padding: 0 10px;
+        margin-top: 12px;
+        position: relative;
+    }
+
+     .range-common-item{
+        width:148px;
+        height:90px;
+        border:solid 1px #dfe4ea; 
+        margin-top:12px;
+        position: relative;
+    }
+
+     .range-common-item:hover .range-common-item-hint{
+        display: block;
+        background: #000;
+        opacity: 0.5;
+        color:#fff;
+        width:100%;
+        height:100%;
+        padding:10px;
+        font-size: 11px;
+        cursor: pointer;
+    }
+
+     .range-common-item-hint{
+        position: absolute;
+        left:0;
+        top:0;
+        display: none;
+    }
+
+     .range-common-item img{
+        width:100%;
+        height:100%;
+    }
+
+     .range-common-search img {
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        top: 18px;
+        right: 28px;
+        cursor: pointer;
+    }
+
+     .range-common-img {
+        width: 147px;
+        height: 90px;
+        border: solid 1px #dfe4ea;
+        margin-top: 12px;
+    }
+
+	hr{
+		margin: 0
+	}	
+
+.nav > li > a {
+    padding: 10px 15px;
+}

@@ -1,0 +1,131 @@
+<style type="text/css">
+    combo-pass-area{
+        position: relative;
+        overflow: visible;
+    }
+
+    combo-pass-area .toggleImg{
+        width:20px;
+        height:22px;
+        position: absolute;
+        top:0px;
+        right:0px;
+    }
+
+    combo-pass-area .toggleImg img{
+        width:8px;
+        height:5px;
+        margin-top:0px;
+        margin-right:0px;
+    }
+
+    combo-pass-area  .input-area:focus{
+        border:solid 1px #4293ee;
+    }
+
+    combo-pass-area .suggest{
+        width: 100%;
+        height: 180px;
+        border:solid 1px #dde4e9;
+        border-radius: 4px;
+        padding:3px;
+        position: absolute;
+        z-index:100;
+        background:#fff
+    }
+
+    combo-pass-area .search{
+        width:100%;
+        height:23px;
+        line-height: 23px;
+        position: relative;
+    }
+
+    combo-pass-area .search input{
+        height:23px;
+        line-height: 23px;
+        border:solid 1px #dde4e9;
+        width:100%
+    }
+
+    combo-pass-area .search img{
+        position: absolute;
+        width:14px;
+        height: 14px;
+        top:4px;
+        right:9px;
+    }
+
+    combo-pass-area .title{
+        height: 28px;
+        line-height: 28px;
+        border-bottom:solid 1px #e2e7ec;
+        margin-top:3px;
+        cursor: pointer;
+    }
+    combo-pass-area .title span{
+        text-align: center;
+        line-height: 25px;
+    }
+
+    combo-pass-area .title span.active{
+        color:#4293ee;
+        border-bottom:solid 3px #4293ee;
+    }
+
+    combo-pass-area .list{
+        width:100%;
+        float:left;
+        height:120px;
+        overflow: scroll;
+    }
+
+    combo-pass-area .item{
+        width:100%;
+        border:none;
+        line-height: 21px;
+        height:21px;
+        text-align: left;
+        padding-left:3px;
+        margin-top:8px;
+        cursor: pointer;
+    } 
+
+    combo-pass-area .item:hover{
+        border-radius: 4px;
+        background: #ecf4fd;
+    } 
+    
+</style>
+<input class="input-area" type="text" style="width:100%" ng-model="ngModel.areaRange"/>
+
+<div ng-click="showSuggest=!showSuggest" class="toggleImg">
+    <img ng-hide="showSuggest" src="views/forbid/img/down.png">
+
+    <img ng-show="showSuggest" src="views/forbid/img/up.png">
+</div>
+
+<div ng-show="showSuggest" class="suggest">
+    <div class="search">
+        <input type="text" ng-model="keyword"/>
+
+        <img ng-click="search()" src="views/forbid/img/icon_search.png">
+    </div>
+    <div class="title">
+        <span ng-class="{active:type=='common'}" ng-click="type='common'" class="w50 fl">常用通行</span>
+        <span ng-class="{active:type=='recent'}" ng-click="type='recent'" class="w50 fl">最近使用</span>
+    </div>
+    <div class="list" ng-show="type=='common'">
+        <div class="item" 
+            ng-hide="passArea.hide"
+            ng-repeat="passArea in commonPassAreas" 
+            ng-click="selectPassArea(passArea)">{{passArea.areaRange}}</div>
+    </div>
+
+    <div class="list" ng-show="type=='recent'">
+        <div class="item" 
+            ng-hide="passArea.hide"
+            ng-repeat="passArea in recentPassAreas" 
+            ng-click="selectPassArea(passArea)">{{passArea.areaRange}}</div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="dialog ss-dialog w100">
+    <div class="dialog_head">
+        选择班次<span class="fr" ng-click="cancel();">X</span>
+    </div>
+
+    <div style="padding: 0 8px;">
+        <table class="ss-table" ng-show="classList&&classList.length>0&&false">
+            <thead>
+                <tr>
+                    <th style="width: 30px;"></th>
+                    <th style="width: 100px;">班次</th>
+                    <th>考勤时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="classItem in classList track by $index" ng-click="data.selectedClass=classItem.attendanceClassId">
+                    <td style="text-align: center;padding-top: 6px;">
+                        <input type="radio" ng-value="classItem.attendanceClassId" name="classCheckbox" ng-model="data.selectedClass">
+                    </td>
+                    <td>
+                        {{classItem.attendanceClassName}}
+                    </td>
+                    <td>
+                        <span style="margin-right: 5px;" ng-repeat="timeItem in classItem.timeRangeList">
+                            {{timeItem.timeString}}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-show="!classList||classList.length<=0||true">
+            <span style="margin-top:80px;">当前没有班次可选，请先去添加班次</span>
+            <a class="active">新增班次</a>
+        </div>
+    </div>
+
+
+    <div class="w100" style="border-top: 1px solid #d5dae1">
+        <a ng-click="cancel();" class="fr">取消</a>
+        <a ng-click="ok();" class="active fr">确认</a>
+    </div>
+</div>

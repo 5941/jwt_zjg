@@ -1,0 +1,23 @@
+{
+    "lengthMenu": "<select class='form-control input-xsmall'><option value='5'>5条／每页</option><option value='10'>10条／每页</option><option value='20'>20条／每页</option><option value='30'>30条／每页</option><option value='40'>40条／每页</option><option value='50'>50条／每页</option></select>",
+    "emptyTable":     "没有查到符合条件的纪录",
+    "info":           "共 _TOTAL_ 笔数据",
+    "infoEmpty":      "共 _TOTAL_ 笔数据",
+    "infoFiltered":   "(filtered from _MAX_ total entries)",
+    "infoPostFix":    "",
+    "thousands":      ",",
+    "loadingRecords": "加载中...",
+    "processing":     "处理中...",
+    "search":         "查询:",
+    "zeroRecords":    "没有查到符合条件的纪录",
+    "paginate": {
+        "first":      "<img src='img/framework/table_first.png'>",
+        "last":       "<img src='img/framework/table_last.png'>",
+        "next":       "<img src='img/framework/table_next.png'>",
+        "previous":   "<img src='img/framework/table_prior.png'>"
+    },
+    "aria": {
+        "sortAscending":  ": 以升序排列此列",
+        "sortDescending": ": 以降序排列此列"
+    }
+}

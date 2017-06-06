@@ -1,0 +1,126 @@
+<style type="text/css">
+	#selectModal{
+		line-height: 30px;
+		height: 30px;
+		border-radius: 5px;
+		border:1px solid #dee5e9;
+		text-indent: 5px;
+		cursor: pointer;
+	}
+	#selectModal:after{
+		position: absolute;
+		content: '';
+		right:8px;
+		top: 6px;
+		width: 13px;
+		height: 14px;
+		background: url(views/key_vehicle/img/icon_date.png) no-repeat;
+	}
+	#dateModal{
+		width: 100%;
+		min-width: 350px;
+		overflow: hidden;
+		border-radius:5px;
+		z-index:9999;
+		box-shadow: 0 0 5px #ccc;
+		position: absolute;
+		left: 0;
+		top: 35px;
+		padding: 10px;
+		background: #fff;
+	}
+	#dateModal .dateBar{
+		width: 50%;
+		overflow: hidden;
+		padding-left: 5px;
+	}
+	#dateModal .dateBar:nth-child(1){
+		padding-left: 0;
+		padding-right: 5px;
+	}
+	.dateBar .datePickerModal{
+		width: 100%;
+		overflow: hidden;
+		border:1px solid #dee5e9;
+		border-radius: 3px;
+		padding: 5px;
+	}
+	.datePickerModal .yearPicker{
+		height: 30px;
+		line-height: 30px;
+		background: #f2f6f9;
+		text-align: center;
+		border-radius: 3px;
+		font-size: 14px;
+		margin-bottom: 10px;
+	}
+	.yearPicker .arrow-left{
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		left: 5px;
+		top: 10px;
+		background: url(views/key_vehicle/img/zuo.png) no-repeat;
+		cursor: pointer;
+	}
+	.yearPicker .arrow-right{
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		right: 5px;
+		top: 10px;
+		background: url(views/key_vehicle/img/you.png) no-repeat;
+		cursor: pointer;
+	}
+	.datePickerModal .monthPicker{
+		padding: 5px;
+	}
+	.monthPicker .monthNum{
+		width:25%;
+		height: 25px;
+		line-height: 25px;
+		border-radius: 3px;
+		text-align: center;
+		cursor: pointer;
+	}
+	.monthNum:hover,.monthNum.action{
+		background: #ecf4fd
+	}
+	.monthNum.forbidden{
+		background: #fafbfc;
+		cursor: not-allowed;
+	}
+
+
+</style>
+<div class="w100 full-height" id="selectModal" ng-click="toggleSelect();">
+	{{start}}-{{end}}
+</div>
+<div id="dateModal" ng-show="showSelect">
+	<div class="dateBar fl">
+		<div class="datePickerModal">
+			<div class="yearPicker w100">
+				<div class="arrow-left" ng-click="cutYear(1)"></div>
+				<div class="arrow-right" ng-click="addYear(1)"></div>
+				{{startYear}}
+			</div>
+			<div class="monthPicker w100">
+				<div class="monthNum fl" ng-click="selectMonth(1,month)" ng-class="{action:startMonth==month,forbidden:endYear+endMonth<startYear+month}" ng-repeat="month in months track by $index">{{month}}</div>
+			</div>
+		</div>
+	</div>
+	<div class="dateBar fl">
+		<div class="datePickerModal">
+			<div class="yearPicker w100">
+				<div class="arrow-left" ng-click="cutYear(0)"></div>
+				<div class="arrow-right" ng-click="addYear(0)"></div>
+				{{endYear}}
+			</div>
+			<div class="monthPicker w100">
+				<div class="monthNum fl" ng-click="selectMonth(0,month)" ng-class="{action:endMonth==month,forbidden:endYear+month<startYear+startMonth}" ng-repeat="month in months track by $index">
+					{{month}}
+				</div>
+			</div>			
+		</div>
+	</div>
+</div>

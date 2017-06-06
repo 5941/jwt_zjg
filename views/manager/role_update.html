@@ -1,0 +1,105 @@
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">{{action}}角色</span>
+        <i class="icon-ask"></i>
+        <span class="return_btn" ui-sref="main.role">返回</span>
+
+    </div>
+    <div class="w100 white-bg" >
+        <ul class="nav nav-pills nav-justified step step-round">
+            <li ng-class="{active:tab_view=='info'}"><a>基本信息</a></li>
+            <li ng-class="{active:tab_view=='module'}"><a>系统模块</a></li>
+            <li ng-class="{active:tab_view=='data'}"><a>数据权限</a></li>
+            <li ng-class="{active:tab_view=='action'}"><a>操作权限</a></li>
+        </ul>
+        <div class="scrollbox noBorder" ng-show="tab_view=='info'">   
+            <form class="form-horizontal" role="form" id="mainForm" name="mainForm" novalidate >   
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        角色名称：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="50" placeholder="请输入角色名称" required class="form-control b-r-md" ng-model="detail.roleName" name="roleName">
+                        <span class="span-warning" ng-show="warning_show && mainForm.roleName.$invalid">此项必填</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        上级角色：
+                    </label>
+                    <div class="col-sm-4">
+                        <!-- <combotree data="role" type="role"></combotree> -->
+                        <input type="text" ng-show="showEdit" class="form-control b-r-md" disabled ng-model="detail.parentRoleName" name="parentRoleName">
+                        <div class="dropBar dropdown fl form-control" ng-hide="showEdit" style="border-radius: 5px;">
+                            <div type="button"
+                                 data-toggle="dropdown">
+                                {{detail.parentRoleName}}<span class="caret"></span>
+                            </div>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="item in parentRoles" ng-click="selectParentsRole(item);"><a ng-bind="item.roleName"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <span class="span-warning" ng-show="warning_show && detail.parentRoleName == null">此项必填</span>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        创建部门：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control b-r-md" disabled ng-model="detail.deptName" name="deptName">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">备注：</label>
+                    <div class="col-sm-4">
+                        <textarea type="text" maxlength="500" placeholder="请输入..." class="form-control b-r-md" ng-model="detail.remark"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="scrollbox noBorder" ng-show="tab_view=='module'">   
+             <div js-tree="moduleTreeConfig" tree="moduleTreeInstance" ng-model="moduleTreeData"  tree-events="check_node:check_node;uncheck_node:uncheck_node" style="margin-top:10px"></div>
+        </div>
+
+        <ul class="scrollbox" ng-show="tab_view=='data'">    
+            <li class="list" ng-repeat="module in modules_selected">
+                <label for="">{{module.moduleName}}</label>
+                <span>
+                    <input type="radio"  value="SELF" ng-model="module.dataRule"  name="{{module.moduleCode}}"> <label for="">仅限本人</label>
+                    <input type="radio"  value="DEPT" ng-model="module.dataRule"  name="{{module.moduleCode}}"> <label for="">所在部门</label>
+                    <input type="radio"  value="DEPT_AND_SUB_DEPT" ng-model="module.dataRule"  name="{{module.moduleCode}}"> <label for="">所在部门及下属部门</label>
+                </span>
+            </li>
+           
+        </ul>
+
+        <div class="scrollbox noBorder" ng-show="tab_view=='action'">   
+             <div js-tree="actionTreeConfig" tree="actionTreeInstance" ng-model="actionTreeData" tree-events="check_node:check_node;uncheck_node:uncheck_node" style="margin-top:10px"></div>
+        </div>
+    </div>
+    <div class="w100 btnbar">
+        <button ng-click="next()" id="edit">{{next_step}}</button>  
+        <button ng-click="prior()" ng-show="tab_view!='info'">上一步</button> 
+    </div>
+</div>
+<style type="text/css">
+    .parsley-errors-list{
+        display: inline;
+        color: #f00;
+        float: left;
+    }
+    .parsley-errors-list li{
+        display: inline;
+    }
+</style>

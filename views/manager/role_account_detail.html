@@ -1,0 +1,23 @@
+<div class="row detailPop full-height" ng-class="{aniIn:popShow2}">
+    <div class="detail_content">
+        <div class="detail_head_action">
+            <img src="/img/management/icon_back2.png" alt="返回" ng-click="backPop2();" class="btn"> 
+            <img src="/img/management/icon_close.png" style="padding-left:0" alt="关闭" ng-click="closePop2();" class="btn"> 
+            <span class="fr btn-link" ng-click="openAccountEdit(account.accountId)" actionbtn action='manager.account.edit'>编辑</span>  
+        </div>
+        <ul class="w100">
+            <li class="detail_header">基本信息</li>
+            <li class="w100 fl" style="margin:20px 0 5px 0"><span>用户头像</span>
+            <img src="{{account.photoThumb == null?'img/management/icon_Head.png':account.photoThumb}}" class="avatar-middle"> </li>
+            <li class="w50 fl"><span>用户代码</span>{{account.accountCode}}</li>
+            <li class="w50 fl"><span>用户姓名</span>{{account.accountName}}</li>
+            <li class="w50 fl"><span>管理部门</span>{{account.deptName}}</li>
+            <li class="w50 fl"><span>管理员</span>{{{'TRUE':'是','FALSE':'否'}[account.isAdmin]}}</li>
+            <li class="w50 fl"><span>状态</span>{{{'TRUE':'启用','FALSE':'禁用'}[account.enable]}}</li>
+            <li class="w50 fl"><span>备注</span>{{account.remark}}</li>
+            <div style="clear: both;"></div>
+            <li class="detail_header">用户角色</li>
+            <div js-tree="treeConfig" tree="treeInstance" ng-model="treeData" style="margin-top:10px"></div>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="full-width full-height dialog_bg">
+	
+</div>
+<div class="dialog">
+	<div class="dialog_head">
+		分发设备<span class="fr" ng-click="closeDistributed();">X</span>
+	</div>
+	<ul class="w100 content_pd">
+		<li class="input_group w100">
+			<label class="fl">收取人警号</label>
+			<input class="fl" id="accountCode" type="text" ng-model="person.accountCode">
+            <img src="/img/management/search.png" class="checkpoliceBtn" style="cursor: pointer;" ng-click="checkPolice();">
+		</li>
+		<li class="input_group w100">
+			<label class="fl" for="">收取人</label>
+			<input class="fl"  disabled="disabled" ng-model="person.accountName" type="text">
+		</li>
+		<li class="input_group w100 input_control">
+			<label class="fl" for="">收取部门</label>
+			<input class="fl" disabled="disabled" ng-model="person.deptName" type="text">
+		</li>
+
+	</ul>
+</div>

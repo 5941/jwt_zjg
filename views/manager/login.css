@@ -1,0 +1,83 @@
+.login-title{
+    margin:0 auto;
+    display: block
+}
+
+.login-form{
+    background:url(../../img/framework/pic_login_welcome.png);
+    width: 398px;
+    height:336px;
+    margin:36px auto 0;
+    overflow: hidden
+}
+
+.login-form .username{
+    width:80%;
+    margin:92px auto 0;
+    
+}
+.login-form .username input{
+    text-indent: 30px;
+    background:url(../../img/framework/icon_login_name.png)  10px center no-repeat;
+    background-size: 18px 18px;
+    border-radius: 5px;
+    border:1px solid #bcc5d1;
+}
+
+.login-form .username input:focus{
+    background:url(../../img/framework/icon_login_name_focus.png)  10px center no-repeat;
+    border:1px solid #4293ee !important;
+    background-size: 18px 18px;
+}
+
+.login-form .password{
+    width:80%;
+    margin:25px auto 0;
+}
+
+.login-form .password input{
+    text-indent: 30px;
+    background:url(../../img/framework/icon_login_password.png)  10px center no-repeat;
+    background-size: 18px 18px;
+    border-radius: 5px;
+    border:1px solid #bcc5d1;
+}
+
+.login-form .password input:focus{
+    border:1px solid #4293ee !important;
+    background:url(../../img/framework/icon_login_password_focus.png)  10px center no-repeat;
+    background-size: 18px 18px;
+}
+
+.login-form .btn{
+    width:80%;margin:25px auto 0
+}
+
+.copyright{
+    text-align: center;
+    position: absolute;
+    bottom: 40px;
+    width:100%
+}
+
+.login-bg{
+    height: 520px;
+    background:url(../../img/framework/pic_login_bj.png) no-repeat scroll top;
+    background-size:100% 100%;
+    width: 100%;
+}
+
+.login-div{
+    display: block;
+    padding:166px
+}
+
+@media (min-height: 900px){
+    .login-bg{
+        height: 600px;
+    }
+
+    .login-div{
+        padding:246px
+    }
+}

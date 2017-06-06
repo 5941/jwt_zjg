@@ -1,0 +1,64 @@
+.dropBar{
+    padding: 0;
+    line-height: 34px
+}
+.dropBar div{
+    padding-left: 6px;
+}
+.btn-radio-group{
+    width:144px;
+    border:1px solid #408ee6;
+    border-radius:3px;
+    height:24px;
+    margin:8px auto;
+    line-height:24px;
+}
+.btn-radio-group span{
+    width:50%;
+    height:100%;
+    display: block;
+    float: left;
+    line-height: 24px;
+    color:#408ee6;
+}
+
+.btn-radio-group span.active{
+    color:#fff;
+    background-color: #408ee6;
+}
+
+.vr-line-thin {
+    background-color: rgba(0, 0, 0, 0);
+    border-style: solid !important;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-width: 1px 0 0 0;
+    border-color: #e5e6e7
+}
+
+.label-title{
+    color:#959595;
+}
+
+.label-value{
+    color:#545454;
+}
+
+.tab-button{
+    display:block; 
+    width:70px; 
+    height:25px; 
+    float:right;
+    line-height:25px; 
+    text-align:center; 
+    border-radius:5px;
+    border:1px solid #ccc; 
+    margin-left:5px;color:#000
+}
+
+.tab-button.active{
+    height: 29px;
+    background:url('../../img/framework/icon-tab-button.png') no-repeat;
+    color: #fff;
+    border:none;
+}

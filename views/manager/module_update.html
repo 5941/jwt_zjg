@@ -1,0 +1,114 @@
+
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">{{action}}模块</span>
+        <i class="icon-ask"></i>
+        <span class="return_btn" ui-sref="main.module">返回</span>
+    </div>
+    <div class="wrapper-content">
+        <div class="w100 edit">
+            <form class="form-horizontal" role="form" name="mainForm" novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        子系统：
+                    </label>
+                    <div class="col-sm-4">
+                        <select class="form-control b-r-md" ng-model="detail.subsystemId" ng-options="subsystem.subsystemId as subsystem.subsystemName for subsystem in subsystems" name="subsystemId"></select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        序号：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="number" placeholder="请输入序号" class="form-control b-r-md" ng-model="detail.seq" name="seq">
+                    </div>
+                </div>
+                 
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        模块编码：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="30" placeholder="请输入模块编码" class="form-control b-r-md" required ng-model="detail.moduleCode" name="moduleCode">
+                        <span class="span-warning" ng-show="mainForm.moduleCode.$dirty && mainForm.moduleCode.$invalid && mainForm.moduleCode.$error.required">此项必填</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        模块名称：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="50" placeholder="请输入模块名称" class="form-control b-r-md" required ng-model="detail.moduleName" name="moduleName">
+                        <span class="span-warning" ng-show="mainForm.moduleName.$dirty && mainForm.moduleName.$invalid && mainForm.moduleName.$error.required">此项必填</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        模块类型：
+                    </label>
+                    <div class="col-sm-4">
+                        <select class="form-control b-r-md input-sm" ng-model="detail.moduleType" ng-options="x.key as x.value for x in [{key:'BOTH',value:'全部'},{key:'WEB',value:'WEB'},{key:'APP',value:'APP'}]"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        模块状态：
+                    </label>
+                    <div class="col-sm-4">
+                        <select class="form-control b-r-md input-sm" ng-model="detail.moduleStatus" ng-options="x.key as x.value for x in [{key:'NORMAL',value:'正常'},{key:'DEVELOPMENT',value:'开发中'},{key:'MAINTENANCE',value:'维护中'}]"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        支持数据权限：
+                    </label>
+                    <div class="col-sm-4">
+                        <select class="form-control b-r-md input-sm" ng-model="detail.supportOffline" ng-options="x.key as x.value for x in [{key:'TRUE',value:'是'},{key:'FALSE',value:'否'}]"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        支持离线：
+                    </label>
+                    <div class="col-sm-4">
+                        <select class="form-control b-r-md input-sm" ng-model="detail.supportDataRule" ng-options="x.key as x.value for x in [{key:'TRUE',value:'是'},{key:'FALSE',value:'否'}]"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        主机地址：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="50" placeholder="请输入主机地址以http开头，以/结尾" class="form-control b-r-md" ng-model="detail.hostUrlPrefix" name="hostUrlPrefix">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        备注：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="500" placeholder="请输入..." class="form-control b-r-md" ng-model="detail.remark" name="remark">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="w100 btnbar">
+            <button ui-sref="main.module">取消</button>
+            <button id="edit" ng-click="doSave()" ng-disabled="mainForm.$invalid">保存</button>
+        </div>
+    </div>
+</div>

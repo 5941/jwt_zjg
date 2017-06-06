@@ -1,0 +1,104 @@
+<style>
+    .time-range-slider-box {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        border: 10px solid #dce1e7;
+    }
+
+    .time-range-slider-mask {
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 60%;
+    }
+    .time-range-slider-bg{
+        position: absolute;
+        left: 8px;
+        right: 8px;
+        top: 0px;
+        bottom: 40%;
+        /*background: green;*/
+        border:1px solid #a3aeb1;
+        border-bottom: 4px solid #a3aeb1;
+    }
+    .time-range-slider-mark{
+        position: absolute;
+        bottom:0;
+        width: 1px;
+        height: 40%;
+        background: #a3aeb1;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    .time-range-slider-submark{
+        position: absolute;
+        bottom:0;
+        width: 1px;
+        height: 20%;
+        background: #a3aeb1;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    .time-range-slider-label{
+        position: absolute;
+        bottom:-40px;
+        font-size: 12px;
+        pointer-events: none;
+    }
+    .time-range-slider-mark:first-child{
+        margin-left: -1px;
+    }
+    .time-range-slider-pointer{
+        position: absolute;
+        bottom: -6px;
+        width: 16px;
+        height: 16px;
+        margin-left: -8px;
+        cursor: pointer;
+        border: 4px solid #47b283;
+        border-radius: 50%;
+        background: #d5eae0;
+        pointer-events: none;
+    }
+    .time-range-slider-end{
+        position: absolute;
+        bottom: -6px;
+        width: 16px;
+        height: 16px;
+        margin-left: -8px;
+        cursor: pointer;
+        border: 4px solid #47b283;
+        border-radius: 50%;
+        background: #d5eae0;
+        pointer-events: none;
+        left: 0;
+    }
+    .time-range-slider-end.point2{
+        left:100%;
+    }
+    .time-range-slider-range{
+        position: absolute;
+        top: 0;
+        height: 100%;
+        opacity: 0.3;
+        background: green;
+    }
+    .time-range-slider-tip{
+        position: absolute;
+        bottom: 20px;
+        background: red;
+        text-align: center;
+        display: none;
+    }
+    
+</style>
+
+<div class="time-range-slider-box">
+    <div class="time-range-slider-bg" ><i class='time-range-slider-pointer'><span class="time-range-slider-tip" ></span></i></div>
+    <div class="time-range-slider-line"></div>
+    <div class="time-range-silder-timeLabel" style="position:absolute;top:-20px;"></div>
+    <div class='time-range-slider-mask'></div>
+</div>

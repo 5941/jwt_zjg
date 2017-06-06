@@ -1,0 +1,141 @@
+<style type="text/css">
+	.passTimeRange{
+		color: #222;
+	}
+	
+	.form-radio-checkbox input[type=radio] {
+	  position: relative;
+	  width: 20px;
+	  height: 20px;
+	  margin: 0;
+	  padding: 0;
+	  outline: 0!important;
+	  border: 0;
+	  -webkit-appearance: none;
+	}
+	.form-radio-checkbox input[type=radio]:before {
+	  content: '';
+	  width: 20px;
+	  height: 20px;
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODJERUY4REY0OTkzMTFFN0E4OTdBODQ5MkU1QzRBQzEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODJERUY4RTA0OTkzMTFFN0E4OTdBODQ5MkU1QzRBQzEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4MkRFRjhERDQ5OTMxMUU3QTg5N0E4NDkyRTVDNEFDMSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4MkRFRjhERTQ5OTMxMUU3QTg5N0E4NDkyRTVDNEFDMSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkI8090AAAGXSURBVHjavFTPLwNBFJ4ibbcb0YOKcrLi10q4ODtIDxX/hgSJi3+ESBw0+DMkDuLgzIlu4qDhopI6cNDVFbu+N143ozutlZQv+bbdmfe+mTf7vkkEQSC6icSfCZ5f3LTO2eAquAyO8VgFPAEPQUcNXlyYkr89mkWS4B54BW6B02CKOcNjNLcPGq3JfRqxY7BAL/lcVgwPDgjTSMnJV7chHp9eRLX2TBtZAye4Aq+d4A6JGemksK0RYWZS3yb7zbTk6FBWlG8fhPvmLWF4G9xsxqglz/Kqwh6PiqnIYMe0IGOdcyOC9AF6qcxmiZ1AC1Is5XBuRLBIDzqzuFBiizpBq7lyXCixlk7w1wj80BSeTrAiW6PeiC3oNkKde50gOUD2WVxUa2HsqU7wCPxA08oG/gkUQ7GUw1aMCF6DJfrjoGk7lV6HGMUwSpyrdQr5dBIOKFw6d7LP8rkv6/m4RDAuy+SdEc44p62X6ZRX2E4b5FklWYUPHrCYp07o2sZjb86BuyDda+90bGCZx+bZcu7/XbDdwqcAAwAzDojY9/TnrQAAAABJRU5ErkJggg==") #ffffff no-repeat;
+	  background-size: 20px;
+	}
+	.form-radio-checkbox input[type=radio]:checked:before {
+	  content: '';
+	  width: 20px;
+	  height: 20px;
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTA5Q0RCRjc0OTkzMTFFN0JCNEE5NUVFREE4QTEzRTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTA5Q0RCRjg0OTkzMTFFN0JCNEE5NUVFREE4QTEzRTYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MDlDREJGNTQ5OTMxMUU3QkI0QTk1RUVEQThBMTNFNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MDlDREJGNjQ5OTMxMUU3QkI0QTk1RUVEQThBMTNFNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnHnakMAAAH2SURBVHjavFRLLwNRFD5V6cQzXomFjVaktI1aSuw8kioL7GyFIGHhB4jGDyCCBJVY2llREo+FxMKOUImFIizRxqs6NR3n3NyZjs7tQlJO8t25c+49350z53zXoqoq5NIsf0bYvhDNXHMhhhBdCDv3RRC7iDXEpXHzwUQ5e+YJDrEhFhHniElEA0LiaOQ+WltGFGQG5wvIthEd9NLjkcDvsoG9ysoWbx4VCF3KsHWRoA8ZQdTzDORshHNEVlOWB9NdxVDHiTRzVucz9HklCITe4T6qtKF7FjGu7TGm7OanQkBAZrTaCitM+Yq011EeayKkAlgpTQcn+1IAlo4+oDcYg97VGJuTj4wOpL0Uw2NNhD4a/G5Jd6wcf8DmWQJeP1V4Tahsvn4S19cNe30iQgcbKtOp7l3JpnS3w4l0QHqvQ0T4a0squihkEWGEDU+K7uh02kwkflf6lzzEUtr0TkRICoCQIaWR1kLoxxYpkSwMNB9sKRClvy+Sngcfp1S14ECpXulsFsEmH954oSml1IzSu8j8QnKssD7ceYPrRyUr2e2zAjO773oz8Fjh5WCSXje2BlUzmVJRGSmWJkpPiz/UpKddDpnSo2p1czmNkWYNwUajagT5RfGjt0RtI3NtNiHmEVfUIQjKMcx9Xi65+P9dsLmybwEGAG4Ur/jc2/XJAAAAAElFTkSuQmCC") #ffffff no-repeat;
+	  background-size: 20px;
+	}
+	
+	.form-radio-checkbox input[type=checkbox] {
+	  position: relative;
+	  width: 20px;
+	  height: 20px;
+	  margin: 0;
+	  padding: 0;
+	  outline: 0!important;
+	  border: 0;
+	  -webkit-appearance: none;
+	}
+	.form-radio-checkbox input[type=checkbox]:before {
+	  content: '';
+	  width: 20px;
+	  height: 20px;
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo3QkNDQzlCQjk0NDlFNzExOTYzMUYyMTBFQTRBMzQ1NSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBRjhGNzU5MjQ5QUQxMUU3OUFCMzk4MUYyNTBFQjg4RiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBRjhGNzU5MTQ5QUQxMUU3OUFCMzk4MUYyNTBFQjg4RiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjdCQ0NDOUJCOTQ0OUU3MTE5NjMxRjIxMEVBNEEzNDU1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjdCQ0NDOUJCOTQ0OUU3MTE5NjMxRjIxMEVBNEEzNDU1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+FnFoUQAAAItJREFUeNpi/P//PwM1ARMDlQHVDWRB5hw6c0MbSC0EYmMi9Z8F4ng7E42rcBFQGMLwwdPXzzx9+e4/sQCkFqQH2Qx0LxtJiQkS7T2oWiN8YchIRrAxDq1YHjVwCBj4l4zC5z8+A88+f/2eaJOevQKrPYezcACCpDuPXi4EYlIKhwSUbDPyCliAAAMAK3hna2MVbNYAAAAASUVORK5CYII=") #ffffff no-repeat;
+	  background-size: 20px;
+	}
+	.form-radio-checkbox input[type=checkbox]:checked:before {
+	  content: '';
+	  width: 20px;
+	  height: 20px;
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUE4ODE0RDE0OUFEMTFFN0JGMkE4RUMzQzA0MTFBRjMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUE4ODE0RDI0OUFEMTFFN0JGMkE4RUMzQzA0MTFBRjMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBQTg4MTRDRjQ5QUQxMUU3QkYyQThFQzNDMDQxMUFGMyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBQTg4MTREMDQ5QUQxMUU3QkYyQThFQzNDMDQxMUFGMyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnkAOUMAAAE8SURBVHjaYvz//z8DNQHj0DLQsf+5NpBaCMTGROo/C8Tx+wslr8IEmNAUkGIYA1TtQmQBdAONyPClET4DGckJNnwGEgRcbIwMnYFCDL56XFjlSTKQnYWRocVPiMFMgZ2Bm42JNANZmVF9zwLk13kLMBjKsjFsvvSNYeWZL8QbmGLNy7A8SZRBVYwVoghodoUbP4OVEgfD3hvfGSbs+8iAK/ViNfDWq98M/JxMDBPDhBksFNkZCpz4GZw1OBmO3fvB0LHrI8M/PHkBq4GHbv9gKFv/juHP3/8M7QGQCDj/+BdD09YPYDF8AGcYggzIXfWW4fnHvwxXn/9iqNn0juHnH8LZlAWN/xeImWGch2//MCQues3wB+jHv/9wmvEfnwvPoqsGuQqPYSBwDp+BSdgMJVA4JAzh8pAaACDAAE16cBJ/sWGlAAAAAElFTkSuQmCC") #ffffff no-repeat;
+	  background-size: 20px;
+	}
+	
+	
+	.form-radio-checkbox > label{
+		display: block;
+		margin-bottom: 15px;
+	}
+	.passTimeRange label input[type=radio] {
+		float: left;
+	}
+	.passTimeRange label > div{
+		display: block;
+		margin-left: 25px;
+	}
+	
+	span.subGroup{
+		margin: 0 10px;
+	}
+	
+	span.subGroup input[type=checkbox]{
+		vertical-align: middle;
+	}
+	
+	.rangeList{
+		width: 112px;
+		height: 26px;
+		border-radius: 4px;
+		border: 1px solid #ccc;
+		color: #222;
+		line-height: 26px;
+		padding: 0px 0px 0px 8px;
+		display: inline-block ;
+		margin: 2px;
+		vertical-align: middle;
+	}
+</style>
+
+<div class="passTimeRange">
+	<div class="form-radio-checkbox">
+	  <label>
+	    <input type="radio" name="passTimeRangeRadio" value="-1" ng-model="passPeriodData.sourceId">
+	    <div>避高峰(早高峰时段：<span ng-repeat="m in peakMorning">{{m.month}} : {{m.startTime}}-{{m.endTime}}	</span>;晚高峰时段：<span ng-repeat="e in peakEvening">{{e.month}} : {{e.startTime}}-{{e.endTime}}	</span>;)</div>
+	  </label>
+	</div>
+	<div class="form-radio-checkbox">
+	  <label ng-repeat="item in passPeriods">
+	    <input type="radio" name="passTimeRangeRadio" ng-value="{{item.passPeriodId}}" ng-model="passPeriodData.sourceId">
+	    <div>{{item.name}}({{item.value}})</div>
+	  </label>
+	</div>
+	<div class="form-radio-checkbox" >
+	  <label >
+	    <input type="radio" name="passTimeRangeRadio" value="-2" ng-model="passPeriodData.sourceId">
+	    <div>
+	    	自定义
+	    	
+    		<div class="rangeList" ng-repeat="tr in passPeriodData.rangeList" ng-show="type=='longPass'">
+    			<img src="./views/forbid/img/off_small.png" ng-click="removeTimeRange(tr)"/>
+    			{{tr.startTime}}-{{tr.endTime}}
+    		</div>
+	    	<time-range-slider t-instance="tInstance" options="options" loaded="defferObj" ng-show="type=='longPass'" style="display:block;height: 100px;width: 520px;" range-list="passPeriodData.rangeList"></time-range-slider>
+	    
+	    	<span class="subGroup" ng-show="type=='tempPass'">
+				<label>开始时间</label>
+				<input type="time" ng-model="startTime"/>
+			</span>
+			<span class="subGroup" ng-show="type=='tempPass'">
+				<label>结束时间</label>
+				<input type="checkbox" name="passTimeRangeRadio" ng-checked="passPeriodData.isNextDay==true" ng-model="passPeriodData.isNextDay">&nbsp;次日
+				<input type="time" ng-model="endTime"/>
+			</span>
+	    </div>
+	  </label>
+	</div>
+	{{passPeriodData}}
+</div>

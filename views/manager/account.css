@@ -1,0 +1,99 @@
+.dropBar{
+    border-radius: 5px !important;
+    width: 75%;
+    margin:0;
+}
+.form-control{
+    height: 30px;
+}
+.input_group combotree{
+    width: 75% !important;
+    margin: 0 !important;
+    float: left;
+}
+.input_group .dropBar{
+    border:1px solid #dee5e9;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 8px;
+}
+.input_group{
+    min-width: 307px !important;
+}
+.input_group label{
+    line-height: 30px;
+    text-align: right;
+    padding-right: 5px;
+}
+.input_group input{
+    border-radius: 5px !important;
+    height: 30px;
+    line-height: 30px;
+}
+.warning_info{
+    position: absolute;
+    left: calc(25% + 10px);
+    top: 25px;
+    color: #f00;
+}
+textarea{
+    width: 100%;
+    border:1px solid #dee5e9;
+    padding: 0 5px;
+    border-radius: 5px !important;
+}
+.input_group label span{
+    margin: 0 !important;
+    color: #f00 !important;
+}
+@keyframes inShow {
+    0% {
+        right: -626px;
+    }
+    100% {
+        right: 15px;
+    }
+}
+@-webkit-keyframes inShow {
+    0% {
+        right: -626px;
+    }
+    100% {
+        right: 15px;
+    }
+}
+.detailPop.aniIn {
+    -webkit-animation: inShow .5s forwards;
+    -moz-animation: inShow .5s forwards;
+    -o-animation: inShow .5s forwards;
+    animation: inShow .5s forwards;
+}
+.detailPop {
+    padding-top: 50px;
+    top: 0;
+    width: 626px;
+    right: -626px;
+    height: 100%;
+    border-left: thin solid lightgrey;
+    background-color: white;
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 999;
+    transition: all .2s linear;
+}
+.span-warning{
+    position: absolute;
+    right: -50px;
+    top: 8px;
+    color: red;
+}
+.btnbar button#reset{
+    background: #4293ee;
+    border:1px solid #4293ee;
+    color: #fff;
+}
+.btnbar button#reset:hover{
+    background: #59a9fa;
+    border:1px solid #59a9fa;
+    color: #fff;
+}

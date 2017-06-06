@@ -1,0 +1,96 @@
+
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">{{action}}部门</span>
+        <i class="icon-ask"></i>
+        <span class="return_btn" ui-sref="main.department">返回</span>
+    </div>
+    <div class="wrapper-content">
+        <div class="w100 edit" style="overflow: visible">
+            <form class="form-horizontal" role="form" name="mainForm" novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        部门代码：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="请输入部门代码"  maxlength="30" class="form-control b-r-md" name="deptCode" required ng-model="detail.deptCode">
+                        <span class="span-warning" ng-show="mainForm.$dirty && mainForm.deptCode.$invalid">此项必填</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        部门名称：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="请输入部门名称"  maxlength="50" class="form-control b-r-md" name="deptName" required ng-model="detail.deptName">
+                        <span class="span-warning" ng-show="mainForm.$dirty && mainForm.deptName.$invalid">此项必填</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        部门全称：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="请输入部门全称"  maxlength="200" class="form-control b-r-md" name="fullName" required ng-model="detail.fullName">
+                        <span class="span-warning" ng-show="mainForm.$dirty && mainForm.fullName.$invalid">此项必填</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        上级部门：
+                    </label>
+                    <div class="col-sm-4" style="position:relative;">
+                        <combotree data="parentDept" type="dept"></combotree>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">最高查看部门：</label>
+                    <div class="col-sm-4" style="position:relative;">
+                        <combotree data="topDept" type="dept"></combotree>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">负责人：</label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="50" placeholder="请输入负责人" class="form-control b-r-md" ng-model="detail.manager">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">联系人：</label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="50" placeholder="请输入联系人" class="form-control b-r-md" ng-model="detail.contacter">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        联系电话：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="50" class="form-control b-r-md" placeholder="请输入联系电话" name="phone" ng-model="detail.phone" required>
+                        <span class="span-warning" ng-show="mainForm.$dirty && mainForm.phone.$invalid && mainForm.phone.$error.required">此项必填</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">地址：</label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="200" placeholder="请输入地址" class="form-control b-r-md" ng-model="detail.address">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">备注：</label>
+                    <div class="col-sm-4">
+                        <textarea type="text" maxlength="500" placeholder="请输入..." class="form-control b-r-md" ng-model="detail.remark"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="w100 btnbar">
+                <button ui-sref="main.department">取消</button>
+                <button id="edit" ng-click="doSave()">保存</button>
+        </div>
+    </div>
+</div>

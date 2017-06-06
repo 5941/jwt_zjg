@@ -1,0 +1,233 @@
+.topTab{
+	height: 40px;
+	font-size: 16px;
+	color: #666;
+	position: absolute;
+	top:0px;
+	left: 0px;
+	width:100%;
+}
+.topTabBtn{
+	display: inline-block;
+	cursor: pointer;
+	padding: 0 10px;
+	line-height: 40px;
+	height: 40px;
+}
+.topTabBtn:hover,.topTabBtn.action{
+	border-bottom: 2px solid #4293ee;
+	color: #4293ee;
+}
+.setBox{
+	width: 100%;
+	font-size: 14px;
+	padding: 15px;
+	border-bottom: 1px solid #dee5e9;
+	color: #666;
+}
+.setBox h5{
+	font-size: 16px;
+	font-weight: normal;
+	clear: both;
+}
+.line-height{
+	line-height: 40px;
+}
+.radioBox{
+	margin-left: 60px;
+	display: inline-block;
+}
+.radioBox img{
+	margin:12px;
+	cursor: pointer;
+}
+.table1{
+	width: 100%;
+}
+.table1 thead{
+	color: #333;
+}
+.table1 tbody tr{
+	border-bottom: 1px solid #dee5e9
+}
+.table1 tbody tr td,.table1 thead tr td{
+	padding: 0;
+	line-height: 35px;
+	text-align: center;
+}
+.table1 tbody tr td:last-child,.table1 thead tr td:last-child{
+	min-width:80px;
+}
+.table1 tbody tr td:nth-child(4),.table1 thead tr td:nth-child(4){
+	width: 445px;
+}
+.btn-add{
+	color: #4293ee;
+	cursor: pointer;
+}
+.btn-add img{
+	margin:14px 5px 16px 0;
+}
+input[type="time"]{
+	height: 25px;
+	line-height: 25px;
+	border-radius: 3px;
+	border:1px solid #dee5e9;
+	text-indent: 3px;
+	width: 80px;
+}
+month-picker{
+	width: 100%;
+	position: relative;
+	text-align: left;
+	vertical-align: middle;
+	display: inline-block;
+
+}
+.fileBoxName{
+	display: inline-block;
+	width: 85px;
+	margin-right: 20px;
+}
+
+.fileBox{
+	display: inline-block;
+	background:#e8ecf1;
+	border-radius: 3px;
+	padding: 0 10px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	margin-right: 10px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+.fileBox .closed{
+	width: 10px;
+	height: 10px;
+	margin-left: 7px;
+	margin-top: 10px;
+}
+.fileBox .fileimg{
+	width: 14px;
+	height: 16px;
+	float: left;
+	margin-top: 7px;
+	margin-right: 5px;
+}
+.fileInputBox{
+	display: inline-block;
+	height: 30px;
+	margin-top: 5px;
+}
+.fileInputBox input{
+	width: 190px;
+	height: 30px;
+	line-height: 30px;
+	text-indent: 20px;
+	border-radius: 3px;
+	border:1px solid #4293ee;
+	background: url(img/file.png) no-repeat 3px center;
+	margin-right: 7px;
+}
+.fileInputBox img{
+	width: 16px;
+	height: 16px;
+	margin: 7px;
+	cursor: pointer;
+}
+.addFileBtn{
+	width: 16px;
+	height: 16px;
+	margin:12px;
+	cursor: pointer;
+}
+
+.dic-tab{
+	padding-left: 160px;
+	position: relative;
+	height: 100%;
+}
+
+.tab-menus-dic{
+	width: 160px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 100%;
+	background: #fff;
+	padding-left:2px;
+	padding-top: 15px;
+}
+.tab-items-dic{
+	height: 40px;
+	width: 100%;
+	line-height: 40px;
+	cursor: pointer;
+	padding-left: 25px;
+}
+.tab-items-dic.actived{
+	background: #cae2fb;
+}
+.tab-content-dic{
+	padding: 15px 15px 0px 15px;
+	background: #eaecee;
+	height: 100%;
+	overflow: auto;
+}
+
+.dic-table{
+	background: #fff;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	padding-top: 40px;
+	padding-bottom: 58px;
+}
+.dic-table-nav{
+	height: 40px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	padding: 0 15px;
+}
+
+.dic-table-add-button{
+	position: absolute;
+	right: 15px;
+	padding-left: 20px;
+	top: 50%;
+	font-size: 14px;
+	line-height: 14px;
+	margin-top: -7px;
+	color: #4293ee;
+	cursor: pointer;
+	background: url("img/add.png") no-repeat 0 center;
+}
+
+.dic-table-title{
+	color: #23272c;
+	font-size: 14px;
+	line-height: 40px;
+}
+
+.dic-table-main{
+	height: 100%;
+	overflow: auto;
+}
+
+.operator-col{
+	width: 120px;
+	text-align: center;
+}
+
+.usable-col{
+	width: 180px;
+	text-align: left;
+}
+
+.edit-button{
+	color: #4293ee;
+	cursor: pointer;
+}

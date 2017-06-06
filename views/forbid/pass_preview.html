@@ -1,0 +1,26 @@
+<div class="full-height" style="display:flex;flex-direction:column" ng-show="showPreview">
+    <div class="header" style="border-bottom: 1px solid #E1E1E8;height: 40px;">
+        <span class="in-title">打印预览</span>
+        <i class="icon-ask"></i>
+        <span class="return_btn" ng-click="goBack()">返回</span>
+    </div>
+    <div class="w100 white-bg" style="padding:0 15px;overflow-y:auto;" id="passPrint">
+    	<style type="text/css">
+			.test{
+				line-height: 90px;
+				background: #006621;
+				font-size: 50px;
+				font-weight: bold;
+			}
+		</style>
+    	<div class="test">1234</div>
+    	<img ng-src="{{upUrl}}" />
+    	<div style="height: 50px;"></div>
+    	<img ng-src="{{upUrl}}" />
+    	
+    	
+    </div>
+    <div class="btnbar" style="padding: 15px;">
+        <button class="btn btn-primary" ng-click="print()" style="margin-top: 0px;">打印</button>
+    </div>
+</div>

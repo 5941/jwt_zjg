@@ -1,0 +1,68 @@
+<style type="text/css">
+    .carDetailRow{
+        margin-bottom:5px;
+        width:100%;
+        display: block;
+        overflow: hidden;
+        font-size: 13px;
+        line-height:23px;
+    }
+
+    .carDetailRow .value{
+        width:75px;
+    }
+</style>
+<div style="width:223px;border-radius:2px;border:solid 1px #dde4e9;box-shadow:0 0 5px #dde4e9;background:#fff">
+    <div style="width:100%;height:35px;line-height:35px;border-bottom:solid 1px #e5e5e5;background:#fafafb;padding-left:11px">{{ngModel.plate}}</div>
+    <div style="width:100%;padding-left: 11px;padding-top:11px;">
+        <div class="carDetailRow">
+            <span class="fl">车辆状态</span>
+            <span class="fr value">{{ngModel.carDetail.zt}}</span>
+        </div>
+
+        <div class="carDetailRow">
+            <span class="fl">车辆类型</span>
+            <span class="fr value">{{ngModel.carDetail.cllx}}</span>
+        </div>
+
+        <div class="carDetailRow">
+            <span class="fl">车辆品牌</span>
+            <span class="fr value">{{ngModel.carDetail.clpp1}}</span>
+        </div>
+
+        <div class="carDetailRow">
+            <span class="fl">车辆颜色</span>
+            <span class="fr value">{{ngModel.carDetail.csys}}</span>
+        </div>
+
+        <div class="carDetailRow">
+            <span class="fl">所有人</span>
+            <span class="fr value">{{ngModel.carDetail.syr}}</span>
+        </div>
+
+        <div class="carDetailRow">
+            <span class="fl">核定载质量</span>
+            <span class="fr value">{{ngModel.carDetail.hdzzl}}</span>
+        </div>
+
+        <div class="carDetailRow">
+            <span class="fl">检验有效期止</span>
+            <span class="fr value">{{ngModel.carDetail.yxqz}}</span>
+        </div>
+
+        <div class="carDetailRow">
+            <span class="fl">强制报废期止</span>
+            <span class="fr value">{{ngModel.carDetail.qzbfqz}}</span>
+        </div>
+
+        <div class="carDetailRow">
+            <span class="fl" style="font-weight:bolder">车辆未处理违法数</span>
+            <span class="fr value" style="color:#f00">{{ngModel.carDetail.unHandleCount}}</span>
+        </div>
+
+        <div class="carDetailRow">
+            <span class="fl"style="font-weight:bolder" >车辆违闯禁总次数</span>
+            <span class="fr value" style="color:#f00">{{ngModel.carDetail.forbidCount}}</span>
+        </div>
+    </div>
+</div>

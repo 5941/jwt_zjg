@@ -1,0 +1,64 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>部门管理</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">主页</a>
+            </li>
+            <li>
+                <a>权限管理</a>
+            </li>
+            <li>
+                <a>部门管理</a>
+            </li>
+            <li class="active">
+                <strong>{{$state.current.data.pageTitle}}</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="fh-breadcrumb" style="height: calc(100% - 196px + 60.8px);">
+    <div class="full-height">
+        <div class="full-height-scroll white-bg border-left" style="padding-top: 15px;" full-scroll>
+            <form method="get" class="form-horizontal" novalidate>
+                <div class="form-group"><label class="col-sm-3 control-label"><span style="color: red;">*</span>部门代码：</label>
+                    <div class="col-sm-6"><input type="text" class="form-control b-r-md" required></div>
+                </div>
+                <div class="form-group"><label class="col-sm-3 control-label"><span style="color: red;">*</span>部门名称：</label>
+                    <div class="col-sm-6"><input type="text" class="form-control b-r-md" required></div>
+                </div>
+                <div class="form-group"><label class="col-sm-3 control-label"><span style="color: red;">*</span>部门全称：</label>
+                    <div class="col-sm-6"><input type="text" class="form-control b-r-md" required></div>
+                </div>
+                <div class="form-group"><label class="col-sm-3 control-label">上级部门：</label>
+                    <div class="col-sm-6"><input type="text" class="form-control b-r-md"></div>
+                </div>
+                <div class="form-group"><label class="col-sm-3 control-label"><span style="color: red;">*</span>最高查看部门：</label>
+                    <div class="col-sm-6"><input type="text" class="form-control b-r-md" required></div>
+                </div>
+                <div class="form-group"><label class="col-sm-3 control-label">负责人：</label>
+                    <div class="col-sm-6"><input type="text" class="form-control b-r-md"></div>
+                </div>
+                <div class="form-group"><label class="col-sm-3 control-label">联系人：</label>
+                    <div class="col-sm-6"><input type="text" class="form-control b-r-md"></div>
+                </div>
+                <div class="form-group"><label class="col-sm-3 control-label">联系电话：</label>
+                    <div class="col-sm-6"><input type="text" class="form-control b-r-md"></div>
+                </div>
+                <div class="form-group"><label class="col-sm-3 control-label">地址：</label>
+                    <div class="col-sm-6"><input type="text" class="form-control b-r-md"></div>
+                </div>
+                <div class="form-group"><label class="col-sm-3 control-label">备注：</label>
+                    <div class="col-sm-6"><textarea type="text" class="form-control b-r-md"/></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group" style="margin-bottom: 10px;">
+                    <div class="col-sm-8 col-sm-offset-2 text-right">
+                        <button class="btn btn-info" type="submit">保存</button>
+                        <button class="btn btn-default" type="cancel">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

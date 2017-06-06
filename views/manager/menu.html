@@ -1,0 +1,87 @@
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">菜单管理</span>
+        <i class="icon-ask"></i>
+
+        <a class="addBtn fr" ng-click="openNew()">
+            <i class="glyphicon glyphicon-plus"></i> 新增菜单
+        </a>
+    </div>
+    <div class="content_bar">
+        <div class="col-sm-2 full-height noPadding white-bg">
+            <div js-tree="menuTreeConfig" ng-model="menuTreeData" style="margin-top:10px" tree="treeInstance" 
+                tree-events-obj="treeEventsObj" tree-events="select_node:select_node;"></div>
+        </div>
+        <div class=" animated fadeInRight col-sm-10 full-height">
+            <div class="w100 content" style="padding-top: 15px; overflow: visible;">
+                <form class="form-horizontal" role="form" name="mainForm" novalidate>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <span style="color: red;">*</span>
+                            菜单编码:
+                        </label>
+                        <div class="col-sm-4">
+                            <input type="text" maxlength="30" placeholder="请输入菜单编码" class="form-control b-r-md" required ng-model="detail.menuCode" name="menuCode">
+                            <span class="span-warning" ng-show="mainForm.menuCode.$dirty && mainForm.menuCode.$invalid && mainForm.menuCode.$error.required">此项必填</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <span style="color: red;">*</span>
+                            菜单名称：
+                        </label>
+                        <div class="col-sm-4">
+                            <input type="text" maxlength="50" placeholder="请输入菜单名称" class="form-control b-r-md" required ng-model="detail.menuName" name="menuName">
+                            <span class="span-warning" ng-show="mainForm.menuName.$dirty && mainForm.menuName.$invalid && mainForm.menuName.$error.required">此项必填</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            菜单URL:
+                        </label>
+                        <div class="col-sm-4">
+                            <input type="text" maxlength="200" placeholder="请输入菜单URL" class="form-control b-r-md"  ng-model="detail.menuUrl" name="menuUrl">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">序号：</label>
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control b-r-md" placeholder="请输入序号" required ng-model="detail.seq" name="seq">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            上级菜单：
+                        </label>
+                        <div class="col-sm-4" style="position:relative;">
+                            <combotree instance="menuTree" data="parentMenu" type="menu" module="{{moduleCode}}"></combotree>
+                        </div>
+                         
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">备注：</label>
+                        <div class="col-sm-4">
+                            <textarea type="text" maxlength="500" placeholder="请输入..." class="form-control b-r-md" ng-model="detail.remark"/>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show='detail.showAction'>
+                        <label class="col-sm-2 control-label">操作：</label>
+                        <div class="col-sm-4">
+                            <button class="btn btn-primary" ng-click='doAction()'>点击编辑操作</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+            <div class="w100 btnbar">
+                <button class="btn btn-default" ng-click="doDelete()">删除</button>
+                <button class="btn btn-primary" id="edit" ng-click="doSave()">保存</button>
+            </div>
+</div>

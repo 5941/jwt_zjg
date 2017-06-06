@@ -1,0 +1,45 @@
+<div class="dialog w100">
+    <div class="dialog_head">
+        自定义操作项<span class="fr" ng-click="cancel();">X</span>
+    </div>
+    <ul class="w100">
+        <li class="fl" ng-show="dtColumn.mData != null && dtColumn.sTitle != null"
+            ng-repeat="dtColumn in dtColumns track by $index">
+            <input type="checkbox" name="checkbox" ng-checked="dtColumn.bVisible" ng-disabled="!dtColumn.bCanHidden">
+            {{dtColumn.sTitle}}
+        </li>
+
+
+    </ul>
+    <table class="table table-bordered table-hover">
+        <th>操作编码</th>
+        <th>操作名称</th>
+        <th>说明</th>
+        <th style="width: 60px;">编辑</th>
+        <tr ng-repeat="ac in actions">
+            <td>{{ac.actionCode}}</td>
+            <td>{{ac.actionName}}</td>
+            <td>{{ac.remark}}</td>
+            <td>
+                <button type="button" class="btn btn-default btn-sm" title="删除"
+                        ng-click='doRemoveAction(ac.actionId)'>
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="text" ng-model="nAction.actionCode"></td>
+            <td><input type="text" ng-model="nAction.actionName"></td>
+            <td><input type="text" ng-model="nAction.remark"></td>
+            <td>
+                <button type="button" class="btn btn-default btn-sm" title="新增"
+                        ng-click="doAddAction()">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
+            </td>
+        </tr>
+    </table>
+    <div class="w100">
+        <a ng-click="cancel();" class="fr">取消</a>
+    </div>
+</div>

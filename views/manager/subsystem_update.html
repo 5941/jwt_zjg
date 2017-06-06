@@ -1,0 +1,56 @@
+
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">{{action}}子系统</span>
+        <i class="icon-ask"></i>
+        <span class="return_btn" ui-sref="main.subsystem">返回</span>
+    </div>
+    <div class="wrapper-content">
+        <div class="w100 edit">
+            <form class="form-horizontal" role="form" name="mainForm" novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        序号：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="number" placeholder="请输入序号" class="form-control b-r-md" required ng-model="detail.seq" name="seq">
+                        <span class="span-warning" ng-show="mainForm.seq.$dirty && mainForm.seq.$invalid && mainForm.seq.$error.required">此项必填</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        系统代号：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="30" placeholder="请输入系统代号" class="form-control b-r-md" required ng-model="detail.subsystemCode" name="subsystemCode">
+                        <span class="span-warning" ng-show="mainForm.subsystemCode.$dirty && mainForm.subsystemCode.$invalid && mainForm.subsystemCode.$error.required">此项必填</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <span style="color: red;">*</span>
+                        系统名称：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" maxlength="50" placeholder="请输入系统名称" class="form-control b-r-md" required ng-model="detail.subsystemName" name="subsystemName">
+                        <span class="span-warning" ng-show="mainForm.subsystemName.$dirty && mainForm.subsystemName.$invalid && mainForm.subsystemName.$error.required">此项必填</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        备注：
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control b-r-md" placeholder="请输入..." ng-model="detail.remark" name="remark">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="w100 btnbar">
+            <button ui-sref="main.subsystem">取消</button>
+            <button id="edit" ng-click="doSave()" ng-disabled="mainForm.$invalid">保存</button>
+        </div>
+    </div>
+</div>

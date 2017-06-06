@@ -1,0 +1,38 @@
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">部门管理</span>
+        <i class="icon-ask"></i>
+
+        <a class="addBtn fr" ng-click="openNew()" actionbtn action='manager.department.create'>
+            <i class="glyphicon glyphicon-plus"></i> 新增部门
+        </a>
+    </div>
+        <div class="col-sm-2 noPadding" style=" height: calc(100% - 40px)">
+            <depttree instance="treeInstance" on-select="onTreeSelect(data)" data="deptnode"></depttree>
+        </div>
+
+        <div class=" animated fadeInRight col-sm-10" style=" height: calc(100% - 40px)">
+            <div class="w100 content" style="margin-bottom: 0; height: calc(100% - 88px)">
+                <form method="get" class="form-horizontal" novalidate>
+                    <div class="w100 content_head">
+                        <h2>部门信息</h2>
+                    </div>
+                    <p><span>部门代码</span>{{detail.deptCode}}</p>
+                    <p><span>部门名称</span>{{detail.deptName}}</p>
+                    <p><span>部门全称</span>{{detail.fullName}}</p>
+                    <p><span>上级部门</span>{{detail.parentDeptName}}</p>
+                    <p><span>最高查看部门</span>{{detail.topDeptName}}</p>
+                    <p><span>负责人</span>{{detail.manager}}</p>
+                    <p><span>联系人</span>{{detail.contacter}}</p>
+                    <p><span>联系电话</span>{{detail.phone}}</p>
+                    <p><span>地址</span>{{detail.address}}</p>
+                    <p><span>备注</span>{{detail.remark}}</p>   
+                </form>
+            </div>
+
+            <div class="w100 btnbar">
+                <button ng-click="openEdit(detail.deptId);" id="edit" actionbtn action='manager.department.edit'>编辑</button>
+                <button ng-click="delete(detail.deptId);" actionbtn action='manager.department.delete'>删除</button>   
+            </div>
+        </div>
+</div>

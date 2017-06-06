@@ -1,0 +1,187 @@
+<div class="full-height" style="position:relative;padding-top:41px;">
+    <div class="w100 header topTab">
+        <div class="topTabBtn fl" ng-class="{action:!advSetting}" ng-click="advSetting=false">基本参数</div>
+        <div class="topTabBtn fl" ng-class="{action:advSetting}" ng-click="advSetting=true">高级设置</div>
+    </div>
+    <div class="w100 content_pd" ng-show="advSetting" style="height: 100%;padding-top: 15px;">
+        <div class="w100 white-bg full-height" style="overflow-y: auto;">
+            <div class="w100">
+                <div class="setBox w100">
+                    <h5>网申记录处理方式</h5>
+                    <div class="w100 line-height">
+                        临时通行证
+                        <div class="radioBox line-height">
+                            <img src="views/forbid/img/radio_check.png" ng-show='!tempManualChecked'>
+                            <img src="views/forbid/img/radio_un.png" ng-hide="!tempManualChecked" ng-click="setNetworkApplication('AUTO','temp_card')">                            自动处理
+                        </div>
+                        <div class="radioBox line-height">
+                            <img src="views/forbid/img/radio_check.png" ng-show='tempManualChecked'>
+                            <img src="views/forbid/img/radio_un.png" ng-hide="tempManualChecked" ng-click="setNetworkApplication('MANUAL','temp_card')">                            人工处理
+                        </div>
+
+                    </div>
+                    <div class="w100 line-height">
+                        长期通行证
+                        <div class="radioBox line-height">
+                            <img src="views/forbid/img/radio_check.png" ng-show='!longManualChecked'>
+                            <img src="views/forbid/img/radio_un.png" ng-hide="!longManualChecked" ng-click="setNetworkApplication('AUTO','long_card')">                            自动处理
+                        </div>
+                        <div class="radioBox line-height">
+                            <img src="views/forbid/img/radio_check.png" ng-show='longManualChecked'>
+                            <img src="views/forbid/img/radio_un.png" ng-hide="longManualChecked" ng-click="setNetworkApplication('MANUAL','long_card')">                            人工处理
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="setBox">
+                    <h5>高峰时间定义</h5>
+                    <div class="w100 line-height">
+                        早高峰
+                        <div class="btn-add fr" ng-click="AddEarly('MP')"><img src="views/forbid/img/add.png">新增</div>
+                    </div>
+                    <table class="table1 ">
+                        <thead>
+                            <tr>
+                                <td>序号</td>
+                                <td>开始时间</td>
+                                <td>结束时间</td>
+                                <td>适用时间</td>
+                                <td>启用状态</td>
+                                <td>操作</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr ng-repeat="item in earlyDataGroup track by $index" ng-hide="item.hide">
+                                <td>{{$index+1}}</td>
+                                <td>{{item.startTime}}</td>
+                                <td>{{item.endTime}}</td>
+                                <td>{{item.month}}</td>
+                                <td>
+                                    <toggle-btn ng-model='item.isUsable' ng-click="setOpen(item)" />
+                                </td>
+                                <td><a href="javascript:void(0)" ng-click="edit(item,'MP');">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="javascript:void(0)" ng-click="deletEarly(item.peakGroup,'MP');">删除</a>
+                                </td>
+                            </tr>
+                            <tr ng-show="showAddEarly">
+                                <td>{{earlyDataGroup.length+1}}</td>
+                                <td><input id="startTime" type="time" ng-model='params.startTime'></td>
+                                <td><input id="endTime" type="time" ng-model='params.endTime'></td>
+                                <td>
+                                    <month-picker ng-model="Months" forbid-month='forbidMonths' edit-month='editMonths'>
+                                </td>
+                                <td>
+                                    <toggle-btn ng-model='params.isUsable' />
+                                </td>
+                                <td><a href="javascript:void(0)" ng-show="showEdit" ng-click="makeEdit();">确定</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="javascript:void(0)" ng-hide="showEdit" ng-click="setEarly();">确定</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="javascript:void(0)" ng-click="closeEarly('MP')">取消</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="w100 line-height">
+                        晚高峰
+                        <div class="btn-add fr" ng-click="AddEarly('EP')"><img src="views/forbid/img/add.png">新增</div>
+                    </div>
+                    <table class="table1">
+                        <thead>
+                            <tr>
+                                <td>序号</td>
+                                <td>开始时间</td>
+                                <td>结束时间</td>
+                                <td>适用时间</td>
+                                <td>启用状态</td>
+                                <td>操作</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr ng-repeat="item in lateDataGroup track by $index" ng-hide="item.hide">
+                                <td>{{$index+1}}</td>
+                                <td>{{item.startTime}}</td>
+                                <td>{{item.endTime}}</td>
+                                <td>{{item.month}}</td>
+                                <td>
+                                    <toggle-btn ng-model='item.isUsable' ng-click="setOpen(item)" />
+                                </td>
+                                <td><a href="javascript:void(0)" ng-click="edit(item,'EP');">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="javascript:void(0)" ng-click="deletEarly(item.peakGroup,'EP');">删除</a>
+                                </td>
+                            </tr>
+                            <tr ng-show="showAddLate">
+                                <td>{{lateDataGroup.length+1}}</td>
+                                <td><input id="startTime" type="time" ng-model='params.startTime'></td>
+                                <td><input id="endTime" type="time" ng-model='params.endTime'></td>
+                                <td>
+                                    <month-picker ng-model="Months" forbid-month='forbidMonth' edit-month='editMonths'>
+                                </td>
+                                <td>
+                                    <toggle-btn ng-model='params.isUsable' />
+                                </td>
+                                <td><a href="javascript:void(0)" ng-show="showEdit" ng-click="makeEdit();">确定</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="javascript:void(0)" ng-hide="showEdit" ng-click="setEarly();">确定</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="javascript:void(0)" ng-click="closeEarly('EP')">取消</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="setBox w100" style="border:none">
+                    <h5>附件材料设置</h5>
+                    <div class="w100 line-height" ng-repeat="item in forbidType track by $index">
+                        <div class="fileBoxName fl">{{item.forbidTypeName}}</div>
+                        <div class="fileBox fl" ng-repeat="file in item.forbidPicType track by $index">
+                            <img src="views/forbid/img/file.png" class="fileimg"> {{file.picTypeName}}
+                            <img src="views/forbid/img/close.png" class="closed fr" ng-click="deleteForbidType(item.forbidTypeId,file.picTypeId)">
+                        </div>
+                        <div class="fileInputBox fl" ng-show="item.showAdd">
+                            <input type="text" class="fl" ng-model="params.picName" placeholder="请输入名称">
+                            <img src="views/forbid/img/sure.png" alt="" class="fl" ng-click="setForbidType(item)">
+                            <img src="views/forbid/img/delete.png" alt="" class="fl" ng-click="item.showAdd=false">
+                        </div>
+                        <img src="views/forbid/img/addBtn.png" ng-show="!item.showAdd" ng-click="item.showAdd=true" alt="" class="fl addFileBtn">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="w100 dic-tab" ng-hide="advSetting">
+        <ul class="tab-menus-dic">
+            <li class="tab-items-dic" ng-click="setCurrentDicTab(item)" ng-class="{actived:currentDicTab==item}" ng-repeat="item in dicMenusList track by item.id">
+                {{item.name}}
+            </li>
+        </ul>
+
+        <div class="tab-content-dic">
+            <div class="dic-table" ng-show="currentDicTab==item" ng-repeat="item in dicMenusList">
+                <div class="dic-table-nav">
+                    <span class="dic-table-title">
+                        {{item.name}}
+                    </span>
+                    <span class="dic-table-add-button" ng-click="dicAdd(item)">
+                        新增
+                    </span>
+                </div>
+                <div class="dic-table-main">
+                    <table datatable="" dt-instance="item.dtInstance" dt-options="item.dtOptions" dt-columns="item.dtColumns" class="table table-hover">
+                    </table>
+                </div>
+                <div class="btnbar" style="position:absolute;bottom:0px;width:100%;">
+                    <span class="checkallDelete fl"><input type="checkbox" ng-model="item.allSelected" ng-click="dicToggleAll(item)"/></span>
+                    <a class="allDelete fl" ng-click="enableRows(item)" ng-class="{disabled:selectedCount(item)<=0}"> 启用 </a>
+                    <a class="allDelete fl" style="margin-left:15px;" ng-click="disableRows(item)" ng-class="{disabled:selectedCount(item)<=0}"> 停用 </a>
+                    <div pager dt-instance="item.dtInstance" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

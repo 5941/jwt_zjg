@@ -1,0 +1,22 @@
+
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">子系统管理</span>
+        <i class="icon-ask"></i>
+
+        <a class="addBtn fr" ng-click="openNew()" actionbtn action='manager.subsystem.create'>
+            <i class="glyphicon glyphicon-plus"></i> 新增子系统
+        </a>   
+    </div>
+    
+    <div class="w100">
+        <div class="w100 white-bg">
+            <!-- data table -->
+             <table datatable="" dt-instance="dtInstance" dt-options="dtOptions" dt-columns="dtColumns" class="table table-hover">
+            </table>
+        </div>
+    </div>
+    
+    <div ng-include="'views/framework/subsystem_detail.html'"></div>
+
+</div>

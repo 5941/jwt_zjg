@@ -1,0 +1,16 @@
+<div class="dialog w100">
+	<div class="dialog_head">
+		自定义列表项<span class="fr" ng-click="cancel();">X</span>
+	</div>
+	<ul class="w100">
+		<li class="fl" ng-show="dtColumn.mData != null && dtColumn.sTitle != null" ng-repeat="dtColumn in dtColumns track by $index">
+			<input type="checkbox" name="checkbox" ng-checked="dtColumn.bVisible" ng-disabled="!dtColumn.bCanHidden">
+			{{dtColumn.sTitle}}
+		</li>
+		
+		<div class="w100">
+			<a ng-click="cancel();" class="fr">取消</a>
+			<a ng-click="ok();" class="active fr">确认</a>
+		</div>
+	</ul>
+</div>

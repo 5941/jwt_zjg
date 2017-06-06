@@ -1,0 +1,52 @@
+.comboTree{
+    width: 100% !important;
+    margin: 0 !important;
+}
+.jstree-default .jstree-node{
+    margin-left: 0;
+}
+.btn-primary {
+    /*background: #fff !important;*/
+}
+ .btn .caret{position: absolute; right: 5px; top: 12px;
+}
+@keyframes inShow {
+    0% {
+        right: -626px;
+    }
+    100% {
+        right: 15px;
+    }
+}
+@-webkit-keyframes inShow {
+    0% {
+        right: -626px;
+    }
+    100% {
+        right: 15px;
+    }
+}
+.detailPop.aniIn {
+    -webkit-animation: inShow .1s forwards;
+    -moz-animation: inShow .1s forwards;
+    -o-animation: inShow .1s forwards;
+    animation: inShow .1s forwards;
+}
+.detailPop {
+    padding-top: 50px;
+    top: 0;
+    width: 626px;
+    right: -626px;
+    height: 100%;
+    border-left: thin solid lightgrey;
+    background-color: white;
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 9;
+}
+.span-warning{
+    position: absolute;
+    right: -50px;
+    top: 8px;
+    color: red;
+}

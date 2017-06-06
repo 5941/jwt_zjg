@@ -1,0 +1,150 @@
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">通行证会审</span>
+        <i class="icon-ask"></i> 
+        <a class="addBtn fr noBorder" ng-click="refreshTable()">
+            <img src="./img/test_alcohol/icon_refresh.png"/> 刷新数据
+        </a>
+    </div>
+    <form role="form" class="form-inline">
+        <div class="advSearch">
+            <div class="dropBar dropdown fl">
+                <div type="button"
+                     data-toggle="dropdown">
+                    {{search_type}}<span class="caret"></span>
+                </div>
+                <ul class="dropdown-menu" role="menu">
+                    <li ng-repeat="item in search_types" ng-click="selectSearchType(item);"><a ng-bind="item"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="search_input fl" ng-show="search_type=='警员'">
+                <person-typeahead ng-model="params.personCode" on-select="selectPerson($item)"/>
+                <img src="./img/management/search.png" style="cursor: pointer;" ng-click="refreshTable();">
+            </div>
+            <div class="dropBar fl noBorder noPadding" ng-show="search_type=='部门名称'" style="position: relative;">
+                <combotree on-select="onTreeSelect(data)"  data="dept" type="dept"></combotree>  
+            </div>
+
+            <div class="dropBar dropdown fl" ng-show="search_type == '数据类型' ">
+                <div type="button" data-toggle="dropdown">
+                    {{state_type}}<span class="caret"></span>
+                </div>
+                <ul class="dropdown-menu" role="menu">
+                    <li ng-repeat="item in state_types" ng-click="selectStateType(item,true);"><a ng-bind="item.name"></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div toggle-addon class="fl toggle_btn">
+                <label class="small text-primary" style="margin-left: 15px;">高级筛选</label>
+                <img src="img/management/screen.png" style="cursor:pointer;">    
+            </div>
+
+            <button type="button" class="btn btn-default fr" ng-click="openColumnDef();" tooltip-placement="left" uib-tooltip="自定义列表项" style="margin-left: 10px;color:#747F8C;">
+                <i class="glyphicon glyphicon-cog"></i>
+            </button>
+            <button type="button" class="btn btn-default fr" ng-click="export();" tooltip-placement="left" uib-tooltip="导出数据" actionbtn action='test_alcohol.test_alcohol_exception.export'>
+                <i><img src="./img/management/button_export.png"></i>
+            </button>
+            <div style="clear: both;"></div>
+        </div>
+
+    </form>
+    <form role="form">
+        <div id="addon" class="advSearch_bar">
+            <div class="inputbar lg fl">
+                <label class="fl">测试时间</label>
+                 <input date-range-picker class="date-picker time_select_bg fl" type="text" readonly ng-model="datePicker.date" options="{eventHandlers: {'apply.daterangepicker': selectDate},timePicker:true,locale:locale}"/>
+            </div>
+
+            <div class="inputbar sm fl">
+                <label class="fl">数据类型</label>
+                <div class="dropBar dropdown fl">
+                    <div type="button"
+                         data-toggle="dropdown" style="text-align:center">
+                        {{state_type}}<span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="item in state_types" ng-click="selectStateType(item,false);">
+                            <a ng-bind="item.name"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="inputbar sm fl">
+                <label class="fl">测试值</label>
+                <input style="width: 15%;" type="number" ng-model="params.startTestValue">
+                -
+                <input style="width: 15%;" type="number" ng-model="params.endTestValue">
+                mg/100ml
+            </div>
+            <div class="inputbar sm fl">
+                <label class="fl">警&nbsp;&nbsp;&nbsp;员</label>
+                <person-typeahead ng-model="params.personCode" class="fl"/>
+            </div>
+            <div style="clear: both;"></div>
+
+            <div class="inputbar lg fl">
+                <label class="fl">测试地点</label>
+                <input class="fl" placeholder="请输入测试地点" type="text" ng-model="params.testAddress">
+            </div>
+            <div class="inputbar sm fl">
+                <label class="fl">车辆类型</label>
+                <div class="dropBar dropdown fl">
+                    <div type="button"
+                         data-toggle="dropdown" style="text-align:center">
+                        {{car_type}}<span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="item in car_types" ng-click="selectCarType(item);"><a ng-bind="item.carTypeName"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="inputbar sm fl">
+                <label class="fl">车牌号码</label>
+                <plateinput class="fl" options="{placeholder:'请输入车牌号码'}" ng-model="params.plate"/>
+            </div>
+
+            <div class="inputbar sm fl">
+                <label class="fl">驾驶证号</label>
+                <driverinput class="fl" options="{placeholder:'请输入驾驶证号'}" ng-model="params.certificateCode">
+            </div>
+            <div style="clear: both;"></div>
+            
+            <div class="inputbar lg fl">
+                <label class="fl">部门名称</label>
+                <div class="dropBar fl noBorder noPadding" style="position: relative; padding-left: 0 !important;">
+                    <combotree on-select="onTreeSelect2(data)"  data="data" type="dept"></combotree> 
+                </div>
+            </div>
+            <div class="w100 text-right">
+                <div class="col-lg-4 col-lg-offset-8">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="params.subDept">搜索包括下级部门
+                    </label>
+                    <div class="btn btn-primary" ng-click="refreshTable()">搜索</div>
+                    <div class="btn btn-default" ng-click="params = {};">清除</div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="content_bar content_pd">
+        <div class="w100 content animated fadeInRight">
+                
+                <div class="row">
+                    <!-- data table -->
+                    <table datatable="" dt-instance="dtInstance" dt-options="dtOptions" dt-columns="dtColumns" class="table table-hover">
+                    </table>
+                </div>
+            
+        </div>
+    </div>
+</div>
+<div class="big_nav_width btnbar">
+    <div pager dt-instance="dtInstance" />
+</div>
+<div ng-include="'views/test_alcohol/exception_detail.html'"></div>

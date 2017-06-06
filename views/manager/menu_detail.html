@@ -1,0 +1,81 @@
+<div class="row detailPop container-fluid" ng-class="{aniIn:popShow}" id="dd">
+    <div class="row" style="height: 40px;line-height: 40px;">
+        <i class="col-sm-2">
+            <img src="/img/management/icon_close.png" alt="关闭" ng-click="closePop();" class="btn">
+        </i>
+        <span class="col-sm-8 text-center">
+            <span ng-bind="detail.moduleName"></span>
+        </span>
+        <span class="col-sm-2 text-right">
+            <span class="text-primary btn btn-link" ng-click="openEdit(detail.moduleId)">编辑</span>
+        </span>
+    </div>
+    <div class="hr-line-thin" style="margin: 0;"></div>
+    <div class="full-width" style="height: calc(100% - 50px);">
+        <div class="col-lg-12 full-width" full-scroll>
+            <form method="get" class="form-horizontal" novalidate>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">序号：</label>
+                    <div class="col-sm-9">
+                        <label class="text-left control-label no-borders" ng-bind="detail.seq">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group"><label
+                        class="col-sm-3 control-label">子系统编码：</label>
+                    <div class="col-sm-9"><label class="text-left control-label no-borders"
+                                                 ng-bind="detail.subsystemCode"></label></div>
+                </div>
+
+                 <div class="form-group"><label
+                        class="col-sm-3 control-label">子系统名称：</label>
+                    <div class="col-sm-9"><label class="text-left control-label no-borders"
+                                                 ng-bind="detail.subsystemName"></label></div>
+                </div>
+
+                <div class="form-group"><label
+                        class="col-sm-3 control-label">模块代号：</label>
+                    <div class="col-sm-9"><label class="text-left control-label no-borders"
+                                                 ng-bind="detail.moduleCode"></label></div>
+                </div>
+
+                <div class="form-group"><label
+                        class="col-sm-3 control-label">模块名称：</label>
+                    <div class="col-sm-9"><label class="text-left control-label no-borders"
+                                                 ng-bind="detail.moduleName"></label></div>
+                </div>
+
+                <div class="form-group"><label
+                        class="col-sm-3 control-label">模块类型：</label>
+                    <div class="col-sm-9"><label class="text-left control-label no-borders"
+                                                 ng-bind="detail.moduleType"></label></div>
+                </div>
+
+                <div class="form-group"><label
+                        class="col-sm-3 control-label">模块状态：</label>
+                    <div class="col-sm-9"><label class="text-left control-label no-borders"
+                                                 ng-bind="detail.moduleStatus"></label></div>
+                </div>
+
+                <div class="form-group"><label
+                        class="col-sm-3 control-label">是否支持数据权限：</label>
+                    <div class="col-sm-9"><label class="text-left control-label no-borders"
+                                                 ng-bind="detail.supportDataRule"></label></div>
+                </div>
+
+                <div class="form-group"><label
+                        class="col-sm-3 control-label">是否支持离线：</label>
+                    <div class="col-sm-9"><label class="text-left control-label no-borders"
+                                                 ng-bind="detail.supportOffline"></label></div>
+                </div>
+
+                <div class="form-group"><label
+                        class="col-sm-3 control-label">备注：</label>
+                    <div class="col-sm-9"><label class="text-left control-label no-borders"
+                                                 ng-bind="detail.remark"></label></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

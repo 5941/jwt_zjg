@@ -1,0 +1,163 @@
+<div class="row detailPop full-height" ng-class="{aniIn:popShow}">
+    <div class="detail_content">
+        <div class="detail_head_action">
+            <div class="fr">
+                <a class="text-primary">预览</a>&nbsp;&nbsp;
+                <a class="text-primary">打印</a>
+            </div>
+            <img src="./img/management/icon_close.png" alt="关闭" ng-click="closePop();" class="btn">
+        </div>
+        <div style="height: calc(100% - 98px);overflow-y: auto;">
+            <div class="w100 container">
+                <div class="row">
+                    <p class="d-header">
+                        <span class="fr">
+                            已停留 1天20小时
+                        </span>
+                        <span>{{detail.arrivalTime }}</span>
+                        <strong>【{{detail.status}}】</strong>
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="fr qrcodeWrap">
+                        <div class="qrcodeBox">
+                            <img src="img/qrcode.png" />
+                        </div>
+                        <p>通行证编号</p>
+                    </div>
+                    <div class="leftWrap">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>通行证类型</label>
+                                <span>长期通行证</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>号牌号码</label>
+                                <span>{{detail.plate}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>重点车辆类型</label>
+                                <span>{{detail.forbidTypeId }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>号牌颜色</label>
+                                <span>{{detail.plateColorId }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>挂车号牌</label>
+                                <span>{{detail.backPlate }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>号牌种类</label>
+                                <span>{{detail.plateTypeId }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>联系人</label>
+                                <span>{{detail.contact}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>所有人</label>
+                                <span>{{detail.owner }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>联系电话</label>
+                                <span>{{detail.phoneNumber }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>行驶证住址</label>
+                                <span>{{detail.address }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>开始日期</label>
+                                <span>{{detail.beginDate }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>结束日期</label>
+                                <span>{{detail.endDate }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>通行时段</label>
+                            <span>{{detail.passTimeRangeList | passTimeRange}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>附件</label>
+                            <div class="attach">
+                                <div ng-repeat="item in detail.cardPicRelationList">
+                                    <img ng-src="{{item.picUrl}}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-repeat="item in detail.passAreaList">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>出发地</label>
+                                <span>{{detail.passAreaList[0].srcName}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>目的地</label>
+                                <span>{{detail.passAreaList[0].destName}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" ng-repeat="item in detail.passAreaList">
+                        <div class="form-group">
+                            <label>通行范围</label>
+                            <span>{{item.areaRange}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="map" style="width: 100%;height: 200px;border: 1px solid #eee;">
+                
+            </div>
+        </div>
+        <div class="detail_bottom w100 content_pd">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>申请日期</label>
+                        <span>{{detail.applyTime}}</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>数据来源</label>
+                        <span>{{detail.accessType}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

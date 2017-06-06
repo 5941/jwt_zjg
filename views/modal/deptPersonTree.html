@@ -1,0 +1,16 @@
+
+<div class="form-group full-width white-bg"
+        style="padding: 6px 6px 6px 6px;margin-bottom: 0;height: 50px;">
+    <div class="div-search b-r-md form-control" style="margin: 0 0 0 7%;width: 100%;">
+        <input type="text" id="keyInput" class="input-search"
+                placeholder="请输入关键字" ng-model="keyword" ng-keyup="searchTree()">
+        <img src="/img/management/search.png" class="img-search">
+    </div>
+
+</div>
+<div class="full-width white-bg" style="height: calc(100% - 60px);">
+    <div full-scroll>
+        <div js-tree="treeConfig" ng-model="treeData" 
+                tree="treeInstance" tree-events-obj="treeEventsObj" should-apply="true" id="treeId" tree-events="select_node:select_node;deselect_node:deselect_node;loaded:loaded"></div>
+    </div>
+</div>

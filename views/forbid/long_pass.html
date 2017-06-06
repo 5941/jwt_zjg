@@ -1,0 +1,262 @@
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">{{forbidType.forbidTypeName}}通行证申请</span>
+        <i class="icon-ask"></i>
+        <span class="return_btn" ng-click="goBack()">返回</span>
+    </div>
+    
+    <div class="w100 white-bg" style="padding:0 15px;padding-bottom:30px;overflow:visible">
+        <hr style="height:1px;border-bottom:solid 1px #b6c2d0" />
+
+        <ul class="nav nav-pills nav-justified step step-round">
+            <li class="active" style="width:350px"><a>基本信息</a></li>
+            <li ng-class="{active:tab_view != 'info'}" style="flex:1"><a>通行时间</a></li>
+            <li ng-class="{active:tab_view=='range'}" style="width:350px"><a>通行范围</a></li>
+        </ul>
+
+        <div class="noBorder" ng-show="tab_view=='info'" >  
+            <div ng-repeat="car in cars track by $index" style="margin-bottom:23px"> 
+                <div class="w100" style="height:32px;line-height:32px;background:#f5f8fb;padding:0 12px;">
+                    <span>车辆{{$index + 1}}</span>
+                    <span class="fr" style="cursor:pointer;color:#4690e4" ng-click="removeCar($index)">删除</span>
+                </div>
+
+                <ul class="w100" style="overflow: visible;">
+                    <li class="w30 input_group fl">
+                        <label class="fl">
+                            <span style="color: red;">*</span>重点车辆类型
+                        </label>
+                        <input type="text" disabled ng-model="forbidType.forbidTypeName" class="fl ng-pristine ng-untouched ng-valid ng-not-empty">
+                    </li>
+
+                    <li class="w30 input_group fl" style="overflow:visible">
+                        <label class="fl">号牌颜色</label>
+                        <div class="dropBar dropdown fl">
+                            <div type="button" data-toggle="dropdown" class="ng-binding">
+                                {{car.plate_color.dataValue}}<span class="caret"></span>
+                            </div>
+                            
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                                <li ng-repeat="plate_color in plate_colors" ng-click="car.plate_color = plate_color;">
+                                    <a ng-bind="plate_color.dataValue"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="w30 input_group fl" style="display:flex">
+                        <label class="fl">
+                            <span style="color: red;">*</span>号牌号码
+                        </label>
+                        <plateinput style="flex:1" class="fl ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty" options="{placeholder:'请输入车牌号码',name:'plate'}" ng-model="car.plate" />
+                        <span class="btn-hecha" ng-click="toShowCarDetail($event,car)">核查</span>
+                        <car-detail style="position:absolute;top:32px;right:0;z-index:10" 
+                            ng-model="car" on-close="closeCarDetail(car)" ng-show="car.showCarDetail"/>
+                    </li>
+
+                    <div style="clear: both;"></div>
+
+                    <li class="w30 input_group fl">
+                        <label class="fl">
+                            <span style="color: red;">*</span>号牌种类
+                        </label>
+                        <div class="dropBar dropdown fl">
+                            <div type="button" data-toggle="dropdown" class="ng-binding">
+                                {{car.plate_type.dataValue}}<span class="caret"></span>
+                            </div>
+                            
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                                <li ng-repeat="plate_type in plate_types" ng-click="car.plate_type = plate_type;">
+                                    <a ng-bind="plate_type.dataValue"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="w30 input_group fl" style="overflow:visible">
+                        <label class="fl">挂车号牌</label>
+                        <plateinput class="fl ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty" options="{placeholder:'请输入车牌号码',name:'plate'}" ng-model="car.backPlate" />
+                    </li>
+
+                    <li class="w30 input_group fl">
+                        <label class="fl">所有人</label>
+                        <input type="text" class="fl ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="car.owner">
+                    </li>
+
+                    <div style="clear: both;"></div>
+
+                    <li class="w100 input_group fl">
+                        <label class="fl" style="width:8.25%">行驶证住址</label>
+                        <input type="text" style="width:91.75%" class="fl ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="car.address">
+                    </li>
+
+                    <div style="clear: both;"></div>
+
+                    <li class="w30 input_group fl">
+                        <label class="fl">
+                            <span style="color: red;">*</span>联系人
+                        </label>
+                        <input ng-model="car.contact" type="text" class="fl ng-pristine ng-untouched ng-valid ng-not-empty">
+                    </li>
+
+                    <li class="w30 input_group fl" style="overflow:visible">
+                        <label class="fl">
+                            <span style="color: red;">*</span>联系电话
+                        </label>
+                        <input ng-model="car.phoneNumber" type="text" class="fl ng-pristine ng-untouched ng-valid ng-not-empty">
+                    </li>
+
+                    <div style="clear: both;"></div>
+
+                    <li class="w30 input_group fl" style="overflow:visible;height:50px;line-height:50px">
+                        <label class="fl">
+                            附件
+                        </label>
+                        <div style="height:50px">
+                            
+                            <div class="img-attach" ng-repeat="pic in car.cardPicRelationList">
+                                <span ng-show="pic.picUrl == ''" class="img_name">添加{{pic.picTypeName}}</span>
+                                <img src="views/forbid/img/icon_takephoto.png" default_img="defaultImgUrl" imageupload ng-model="pic.picUrl"/>
+                                <img ng-click="pic.picUrl='';" ng-show="pic.picUrl != ''" src="views/forbid/img/btn_del_img.png" class="btn-delete-img">
+                            </div>
+                        </div>
+                    </li>
+                </ul>	
+
+                <div style="clear: both;"></div>
+            </div>
+            <div class="w100 btn-add">
+                <a ng-click="addCar()">添加车辆</a>
+            </div>
+        </div>
+
+        <div class="noBorder" ng-show="tab_view=='time'">
+            <ul class="w100" style="overflow: hidden;">
+            <li class="w30 input_group fl" style="overflow:visible">
+                    <label class="fl">开始日期</label>
+                    <input type="date" ng-model="data.beginDate">
+                </li>
+
+                <li class="w30 input_group fl">
+                    <label class="fl" >
+                        结束日期
+                    </label>
+                    <input type="date" ng-model="data.endDate">
+                </li>
+
+                <li class="w30 input_group fl">
+                    <label class="fl">
+                        有效期：{{data.validDates}}
+                    </label>
+                </li>
+
+                <div style="clear: both;"></div>
+
+                <li class="w100 fl" style="margin-top:20px">
+                    <label class="fl" style="width:8.75%;text-align:right;padding-right:5px">
+                        通行时段
+                    </label>
+                    <pass-time-range class="fl" type="longPass" style="width:75%;" pass-period-data="passPeriodData"></pass-time-range>
+                </li>
+
+                </ul>
+        </div>
+
+        <div class="noBorder" ng-show="tab_view=='range'" style="display:flex;">
+            <ul style="overflow: visible;width:60%">
+                <li class="w100 input_group fl" style="overflow:visible;display:flex">
+                    <label class="fl">出发地</label>
+                    <combo-poi-search ng-model="data.start" on-select="selectStart(data)"/>
+                </li>
+
+                <li class="w100 input_group fl" style="overflow:visible;display:flex">
+                    <label class="fl">
+                        目的地
+                    </label>
+                    <combo-poi-search ng-model="data.end" on-select="selectEnd(data)"/>
+                </li>
+
+                <li class="w100 input_group fl">
+                    <label class="fl">
+                        是否需要会审
+                    </label>
+                    <div class="radioBox line-height">
+                        <radio-btn ng-model="data.needRevice" text="是" value="true" />
+
+                        <radio-btn style="margin-left:30px" ng-model="data.needRevice" text="否" value="false"/>
+                    </div>
+                </li>
+
+                <li class="w100 input_group fl" ng-show="data.needRevice == 'true'">
+                    <label class="fl">
+                       会审部门
+                    </label>
+                    <div class="radioBox fl">
+                        <div style="height:30px;line-height:30px;" class="fl">
+                            <input type="checkbox" style="width:auto;height:auto" ng-model="allDutyAreaSelect" ng-change="selectAllDutyArea()" class="ng-pristine ng-untouched ng-valid ng-not-empty" />
+                            全部
+                        </div>
+
+                        <div style="height:30px;line-height:30px;" ng-repeat="duty_area in duty_areas" class="fl">
+                            <input type="checkbox" style="width:auto;height:auto;margin-left:21px;margin-right:14px;" ng-model="duty_area.selected" ng-change="toggleSelectDutyArea(duty_area)" class="ng-pristine ng-untouched ng-valid ng-not-empty" />
+                            {{duty_area.areaRange}}
+                        </div>
+                    </div>
+                </li>
+
+                <li class="w100 input_group fl input_passArea" ng-repeat="passArea in data.passAreas">
+                    <label class="fl">
+                        通行范围
+                    </label>
+                    <combo-pass-area on-select="selectPassArea(data)" ng-model="passArea"/>
+
+                    <span class="icon" ng-class="{isDone:passArea.pointList != '[]' && passArea.areaRange != ''}" ng-show="$index < data.passAreas.length-1"/>
+
+                    <button style="margin-left:9px" class="btn-cancel" ng-click="deletePassArea($index)" ng-show="$index < data.passAreas.length-1">删除</button>
+                    <button style="margin-left:33px" class="btn-primary" ng-click="addDefPassArea()" ng-show="$index == data.passAreas.length-1">新增</button>
+                </li>
+            </ul>
+
+            <div class="fl" style="flex:1;margin-left:20px;height:300px;position:relative">
+                <forbid-area-map instance="forbidAreaMap"/>
+                <span class="draw-line" ng-click="showEditForbidRange=true">绘制通行范围</span>
+            </div>
+        </div>
+    </div>
+    <div class="w100 btnbar">
+        <button class="btn-cancel" ng-click="next()" id="edit">{{next_step}}</button>  
+        <button class="btn-primary" ng-click="deliver()" ng-show="tab_view=='range'">转交</button>  
+        <button class="btn-primary" ng-click="prior()" ng-show="tab_view!='info'">上一步</button> 
+    </div>
+</div>
+
+<div class="no_question" id="div_approve" class="modal fade" style="display:none">
+    <div class="dialog_header w100">
+        转交
+        <img src="views/forbid/img/close.png" class="fr" data-dismiss="modal">
+    </div>
+    <div class="w100 content_pd">
+        <label style="line-height: 40px; width: 57px" class="fl">转交人</label>
+        <person-typeahead class="fl" ng-model="auditorName" on-select="selectPerson($item)"/>
+        <div class="w100">
+            <label  class="fl">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</label>
+            <textarea style="width: 300px" ng-model="approveData.advice"></textarea>
+        </div>
+        <div class="actionBtn doSure fr" ng-click="approve();">确认</div>
+        <div class="actionBtn doCancel fr"  data-dismiss="modal" >取消</div>
+    </div>
+
+</div>
+
+<edit-forbid-range ng-show="showEditForbidRange" pass-areas="data.passAreas" on-close="closeEditForbidRange(data)"/>
+
+<style type="text/css">
+    .parsley-errors-list{
+        display: inline;
+        color: #f00;
+        float: left;
+    }
+    .parsley-errors-list li{
+        display: inline;
+    }
+</style>

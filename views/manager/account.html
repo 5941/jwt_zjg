@@ -1,0 +1,63 @@
+<div class="full-height">
+    <div class="w100 header">
+        <span class="in-title">用户管理</span>
+        <i class="icon-ask"></i>
+
+        <a class="addBtn fr" ng-click="openNew()" actionbtn action="manager.account.create">
+            <i class="glyphicon glyphicon-plus"></i> 新增用户
+        </a>
+    </div>
+    <div class="w100" style="height: calc(100% - 40px)">
+         <div class="col-sm-2 full-height noPadding" >
+            <depttree instance="treeInstance" on-select="onTreeSelect(data)" data="deptnode"></depttree>
+        </div>
+        
+        <div class="animated fadeInRight col-sm-10 full-height" style="position: relative;">
+            <div class="w100 content" style="margin-bottom: 0; height: calc(100% - 58px); min-height: 0; overflow-y: auto;">
+                <form role="form" class="form-inline">
+                    <div class="advSearch" style="box-shadow: none; padding: 15px 0" >
+                        <!--
+                        <div class="dropBar dropdown fl">
+                            <div type="button"
+                                 data-toggle="dropdown">
+                                {{search_type}}
+                            </div>
+                        </div>
+                        -->
+                        <div class="search_input fl">
+                            <account-typeahead class="fl noBorder" options="{placeholder:'请输入警号或警员姓名'}" 
+                            ng-model="inputs.accountCode" ng-keyup="myKeyup($event)"></account-typeahead>
+                            <img src="/img/management/search.png" class="fl" style="margin-top: 8px; cursor: pointer;" ng-click="refreshTable()">
+                        </div>
+                            <label class="checkbox-inline" style="margin: 7px 0 0 10px; color: #2a7cd9">
+                                <input type="checkbox" style="margin-top: 2px;" ng-click="refreshTable()" ng-model="inputs.check_subDept"><span>搜索包括下级部门</span>
+                            </label>
+                        <button type="button" class="btn btn-default fr" ng-click="openColumnDef()" tooltip-placement="left" uib-tooltip="自定义列表项" style="color:#747F8C">
+                            <i class="glyphicon glyphicon-cog"></i>
+                        </button>
+                        <div style="clear: both;"></div>
+                    </div>
+                </form>
+                
+                
+                <div class="row">
+                    <!-- data table -->
+                    <table datatable="" dt-instance="dtInstance" dt-options="dtOptions" dt-columns="dtColumns" class="table table-hover">
+                    </table>
+                </div>
+            </div>
+            <div class="w100 btnbar" style="width:calc(100% - 30px) !important; position: absolute; left: 15px; bottom: 0;">
+                <span class="checkallDelete fl">
+                    <input type="checkbox" ng-model="allSelected" ng-click="toggleAll()"/>
+                </span>
+                <a class="allDelete fl" ng-class="{disabled:selectedCount()<=0}" ng-click="deleteRows()" actionbtn action='manager.account.delete'>
+                    删除
+                </a>
+                <div pager dt-instance="dtInstance" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div ng-include="'views/framework/account_detail.html'"></div>
